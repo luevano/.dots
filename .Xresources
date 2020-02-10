@@ -2,7 +2,7 @@
 !!	~/.Xresources
 !!
 
-#include "/home/luevano/.config/xcolors/solarized_dark"
+#include ".config/xcolors/solarized_dark"
 
 *background:					COLOR0
 *foreground:					COLOR7
