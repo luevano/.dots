@@ -1,0 +1,65 @@
+# i3blocks config
+
+# Global properties
+command=$HOME/.local/bin/blocklets/$BLOCK_NAME
+separator=false
+separator_block_width=5
+markup=pango
+
+[gpu]
+label=
+interval=10
+#min_width=GPU 100% 100% 100% 100%
+#T_WARN=70
+#T_CRIT=90
+
+[cpu]
+label= 
+interval=10
+#min_width=CPU: 100.00%
+#T_WARN=50
+#T_CRIT=80
+#DECIMALS=2
+
+[memory]
+label=
+#instance=swap
+interval=30
+
+[volume]
+interval=once
+signal=1
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
+#LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
+#AUDIO_HIGH_SYMBOL='  '
+#AUDIO_MED_THRESH=50
+#AUDIO_MED_SYMBOL='  '
+#AUDIO_LOW_THRESH=0
+#AUDIO_LOW_SYMBOL='  '
+#AUDIO_DELTA=5
+#DEFAULT_COLOR="#ffffff"
+#MUTED_COLOR="#a0a0a0"
+#USE_ALSA_NAME=0
+#USE_DESCRIPTION=0
+## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
+#SUBSCRIBE=0
+
+[calendar]
+label= 
+DATEFMT=+%m/%b/%y %H:%M
+# SHORTFMT=+%H:%M:%S
+HEIGHT=180
+WIDTH=220
+interval=1
+
+# [time]
+# interval=1
+# TZ_FILE=~/.tz
+# STRFTIME_FORMAT=%m/%b/%y %H:%M
+# TZONES=$DEFAULT_TZ
+#  ,Brazil/East,Australia/Brisbane,Asia/Calcutta
+# TZ_LABELS=CUU
+#  ,Brazil,AU,Hyderabad

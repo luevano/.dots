@@ -1,0 +1,9 @@
+#!/bin/sh
+# ~/.config/aliasrc
+#
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Colorize commands when possible.
+alias ls="ls -h --color=auto --group-directories-first"

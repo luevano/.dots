@@ -1,5 +1,5 @@
 !! 
-!!	~/.Xresources
+!! ~/.Xresources
 !!
 
 #include ".config/xcolors/solarized_dark"
