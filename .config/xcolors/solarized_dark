@@ -1,0 +1,31 @@
+!! Black dark/light
+#define COLOR0  #073642
+#define COLOR8  #002b36
+
+!! Red dark/light
+#define COLOR1  #dc322f
+#define COLOR9  #cb4b16
+
+!! Green dark/light
+#define COLOR2  #859900
+#define COLOR10 #586e75
+
+!! Yellow dark/light
+#define COLOR3  #b58900
+#define COLOR11 #657b83
+
+!! Blue dark/light
+#define COLOR4  #657b83
+#define COLOR12 #839496
+
+!! Magenta dark/light
+#define COLOR5  #d33682
+#define COLOR13 #6c71c4
+
+!! Cyan dark/lighy
+#define COLOR6  #2aa198 
+#define COLOR14 #93a1a1 
+
+!! White dark/light
+#define COLOR7  #eee8d5
+#define COLOR15 #fdf6e3
