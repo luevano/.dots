@@ -1,0 +1,11 @@
+#!/bin/sh
+# ~/.xprofile
+#
+
+# This is run when a display manager logs in.
+# Used as source for ~/.xinitrc.
+
+dunst & 		# Notifications.
+nm-applet & 	# Network manager.
+udiskie & 		# Drive mounting.
+flameshot &		# Screenshots.
