@@ -3,7 +3,7 @@
 #
 
 ##--Environment variables--##
-# Default programs.
+	## Default programs.
 export EDITOR="nvim"
 export VISUAL="nvim"
 export VISUAL_EDITOR="nvim"
@@ -13,5 +13,8 @@ export READER="zathura"
 export FILE="ranger"
 export STATUSBAR="i3blocks"
 
-# ~/ cleanup.
+	## ~/ cleanup.
 export ZDOTDIR="$HOME/.config/zsh"
+
+	## Program settings.
+export RANGER_LOAD_DEFAULT_RC=FALSE
