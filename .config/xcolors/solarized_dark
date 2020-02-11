@@ -15,7 +15,7 @@
 #define COLOR11 #657b83
 
 !! Blue dark/light
-#define COLOR4  #657b83
+#define COLOR4  #268bd2
 #define COLOR12 #839496
 
 !! Magenta dark/light
