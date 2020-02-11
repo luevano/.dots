@@ -19,19 +19,19 @@ set $read --no-startup-id $READER
 set $rstbar pkill -RTMIN+1 $STATUSBAR
 
 ##--i3bar configuration--##
-# Primary monitor. (DP-2)
+# Primary monitor.
 bar {
-		output DP-2
+		output primary
+		tray_output primary
 		position top
 		status_command $STATUSBAR
-		tray_output DP-2
 }
-# Second monitor. (HDMI-1)
+# Second monitor.
 bar {
-		output HDMI-1
+		output DP-0
+		tray_output none
 		position top
 		status_command $STATUSBAR
-		tray_output none
 }
 
 ##--Keybindings--##
