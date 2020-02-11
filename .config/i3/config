@@ -10,7 +10,9 @@ gaps inner 5
 gaps outer 5
 set $mod Mod4
 font pango:monospace 10
-exec --no-startup-id nm-applet
+exec --no-startup-id dunst &
+exec --no-startup-id nm-applet &
+exec --no-startup-id udiskie &
 	## i3config variables.
 set $term --no-startup-id $TERMINAL
 set $fmgr --no-startup-id $FILE
