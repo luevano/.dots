@@ -5,8 +5,8 @@
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.
 
-# picom &			# Transparency and stuff.
-# dunst & 		# Notifications.
-# nm-applet & 	# Network manager.
-# udiskie & 		# Drive mounting.
-# flameshot &		# Screenshots.
+picom &			# Transparency and stuff.
+dunst & 		# Notifications.
+nm-applet & 	# Network manager.
+udiskie & 		# Drive mounting.
+flameshot &		# Screenshots.

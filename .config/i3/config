@@ -11,6 +11,8 @@ gaps outer 5
 set $mod Mod4
 font pango:monospace 10
 	## i3config variables.
+set $mon1 "HDMI-2"
+set $mon2 "DP-2"
 set $term --no-startup-id $TERMINAL
 set $fmgr --no-startup-id $FILE
 set $ibwsr --no-startup-id $BROWSER
@@ -60,8 +62,8 @@ client.background       $c15
 ##---i3bar configuration---##
 	## Primary monitor.
 bar {
-	output primary
-	tray_output primary
+	output $mon1
+	tray_output $mon1
 	position top
 	status_command $STATUSBAR
 	colors{
@@ -79,7 +81,7 @@ bar {
 }
 	## Second monitor.
 bar {
-	output DP-0
+	output $mon2
 	tray_output none
 	position top
 	status_command $STATUSBAR
