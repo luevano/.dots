@@ -1,7 +1,7 @@
 # i3blocks config
 
 # Global properties
-command=$HOME/.local/bin/blocklets/$BLOCK_NAME
+command=$HOME/.local/bin/blocks/$BLOCK_NAME
 separator=false
 separator_block_width=5
 markup=pango

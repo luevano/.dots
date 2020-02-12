@@ -6,4 +6,4 @@
 # but since display managers use ~/.xprofile instead,
 # .xprofile is sourced to be compatible with both.
 
-[[ -f ~/.xprofile ]] && . ~/.xprofile
+# [[ -f ~/.xprofile ]] && . ~/.xprofile
