@@ -27,9 +27,5 @@ compinit
 # Include hidden files in autocomplete.
 _comp_options+=(globdots)
 
-# Prompt themes.
-# autoload -Uz promptinit
-# promptinit
-
 # Add syntax highlighting.
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
