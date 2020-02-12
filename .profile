@@ -3,7 +3,7 @@
 #
 ##--Environment variables--##
 	## Modified env vars.
-export PATH="$PATH:$(du -L "$HOME/.local/bin/ | cut -f2 | tr '\n' ';' | sed 's/:*$//')"
+export PATH="$PATH:$(du -L "$HOME/.local/bin/" | cut -f2 | tr '\n' ';' | sed 's/:*$//')"
 
 	## Default program.
 export EDITOR="nvim"
