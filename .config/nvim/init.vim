@@ -6,7 +6,7 @@
 " let autoload_plug_path = '~/.config/nvim/autoload/plug.vim'
 " if !filereadable(autoload_plug_path)
 "	echo "Downloading junegunn/vim-plug to manage plugins..."
-" 	silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs 
+"	silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
 "		\ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
 "	autocmd VimEnter * PlugInstall
 " endif
@@ -14,10 +14,15 @@
 
 ""---Loads plugins---""
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'mboughaba/i3config.vim'	
+	Plug 'mboughaba/i3config.vim'
 	Plug 'junegunn/goyo.vim'
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'mhinz/vim-signify'
+	Plug 'jmcantrell/vim-virtualenv'
+	Plug 'lervag/vimtex'
 call plug#end()
 "" Commands for plug.
 " PlugInstall [name ...] [#threads]		Install plugins
@@ -32,8 +37,16 @@ call plug#end()
 syntax on
 set number relativenumber
 set clipboard+=unnamedplus
-" set bg=light
-
-
+" set bg=dark
 " Set 1 tab = 4 spaces.
 set ts=4 sw=4
+
+""---Plugin configuration---""
+	"" vim-airline
+	let g:airline_powerline_fonts=1
+
+	"" vim-airline-themes
+	let g:airline_theme='solarized'
+
+	"" vim-signify
+	set updatetime=100
