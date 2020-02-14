@@ -44,8 +44,3 @@ icon_names:
   detach: [udiskie-detach]
   delete: [udiskie-eject]
   quit: [application-exit]
-
-device_config:
- - id_uuid: 681C5DE81C5DB234
-   ignore: false
-   automount: true
