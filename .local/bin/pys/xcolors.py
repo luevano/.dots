@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 
 HOME=os.environ['HOME'] + '/'
@@ -17,7 +18,7 @@ def update_xresources(csname):
     with open(XRPATH, 'r') as infile:
         lines = infile.readlines()
 
-    with open(file_dir, 'w') as outfile:  
+    with open(file_dir, 'w') as outfile:
         for i, line in enumerate(lines):
             if i == 4:
                 nline = line.split('/')
@@ -32,19 +33,19 @@ def update_alacritty(csname):
     """
     Updates the ~/.config/alacritty/alacritty.yml file with new color scheme.
     """
-    if csname not in CSLIST:                 
+    if csname not in CSLIST:
         return f"{csname} not in {XCDIR}"
- 
+
     with open(ALPATH, 'r') as infile:
         lines = infile.readlines()
-    
+
     for line in lines:
         if 'background' in line:
             print(line)
 
     return None
 
-    with open(file_dir, 'w') as outfile:  
+    with open(file_dir, 'w') as outfile:
         for i, line in enumerate(lines):
             if i == 4:
                 nline = line.split('/')
@@ -53,3 +54,7 @@ def update_alacritty(csname):
                 outfile.write(nline)
             else:
                 outfile.write(line)
+
+
+if __name__=="__main__":
+    print('Test')
