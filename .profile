@@ -7,8 +7,6 @@ export PATH="$PATH:$(du -L "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/
 
 	## Default program.
 export EDITOR="nvim"
-export VISUAL="nvim"
-export VISUAL_EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="google-chrome-stable"
 export READER="zathura"

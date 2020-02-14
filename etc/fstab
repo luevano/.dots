@@ -1,0 +1,29 @@
+#
+# /etc/fstab
+# Static information about the filesystems.  See fstab(5) for details.
+# This is a hard copy of my current fstab, no symlink is being used so this is not being updated.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sda7
+UUID=946c902c-7252-46e5-a45f-2504e14b923a		/         		ext4      	rw,relatime	0 1
+
+# /dev/sda5
+UUID=091B-9B6F      							/boot			vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/sda8
+UUID=835a9368-2084-4e28-b514-ec62abca7433		/home     		ext4      	rw,relatime	0 2
+
+# /dev/sda6
+UUID=5192ace9-d0f4-4777-b94c-ccf6ae01e8e0		none      		swap      	defaults  	0 0
+
+# /dev/sda4 # Windows partition (main)
+UUID=8A9C4E009C4DE773							/media/Windows	ntfs		defaults	0 2
+
+# /dev/sdb2 # Storage
+UUID=445A1DB95A1DA8A6							/media/Storage	ntfs		defaults	0 2
+
+# /dev/sdc2 # Storage2
+UUID=22F4424EF442247F							/media/Storage2	ntfs		defaults	0 2
+
+# /dev/sde2 # Storage3
+UUID=681C5DE81C5DB234							/media/Storage3	ntfs		defaults	0 2

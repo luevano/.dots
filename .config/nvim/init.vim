@@ -15,9 +15,9 @@
 ""---Loads plugins---""
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'mboughaba/i3config.vim'	
-
-	" Goyo
 	Plug 'junegunn/goyo.vim'
+	Plug 'preservim/nerdtree'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 "" Commands for plug.
 " PlugInstall [name ...] [#threads]		Install plugins
@@ -29,11 +29,11 @@ call plug#end()
 " PlugSnapshot[!] [output path]			Generate script for restoring the current snapshot of the plugins
 
 ""---Basic configuration---""
-" Enable syntax highlighting.
 syntax on
-
-" Show line numbers and use relativenumber.
 set number relativenumber
+set clipboard+=unnamedplus
+" set bg=light
+
 
 " Set 1 tab = 4 spaces.
 set ts=4 sw=4
