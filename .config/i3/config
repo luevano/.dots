@@ -11,8 +11,8 @@ gaps outer 5
 set $mod Mod4
 font pango:monospace 10
 	## i3config variables.
-set $mon1 "HDMI-2"
-set $mon2 "DP-2"
+set $mon1 "HDMI-0"
+set $mon2 "DP-0"
 set $term --no-startup-id $TERMINAL
 set $fmgr --no-startup-id $FILE
 set $ibwsr --no-startup-id $BROWSER
@@ -52,12 +52,12 @@ set_from_resource $c15	color15
 
 ##---i3 color scheme---##
 # Class					bor bgt txt ind chb
-client.focused          $c14	$c4 $c8 $c4 $c6
-client.focused_inactive $c0 $c0 $c14 $c11 $c0
-client.unfocused        $c0 $c8 $c14 $c0 $c0
-client.urgent           $c1 $c1 $c8 $c1 $c1
-client.placeholder      $c8 $c8 $c14 $c8 $c8
-client.background       $c15
+client.focused			$c14	$c4 $c8 $c4 $c6
+client.focused_inactive	$c0 $c0 $c14 $c11 $c0
+client.unfocused		$c0 $c8 $c14 $c0 $c0
+client.urgent			$c1 $c1 $c8 $c1 $c1
+client.placeholder		$c8 $c8 $c14 $c8 $c8
+client.background		$c15
 
 ##---i3bar configuration---##
 	## Primary monitor.
@@ -67,16 +67,16 @@ bar {
 	position top
 	status_command $STATUSBAR
 	colors{
-    	background	$c8
-        statusline	$c12
+		background	$c8
+		statusline	$c12
         separator	$c0
-    	
-    	# Class				bor bag txt
-        focused_workspace   $c14 $c4 $c8
-        active_workspace    $c14 $c11 $c8
-        inactive_workspace  $c11 $c0 $c14
-        urgent_workspace    $c1 $c1 $c8
-        binding_mode        $c8 $c3 $c8
+
+		# Class				bor bag txt
+		focused_workspace	$c14 $c4 $c8
+		active_workspace	$c14 $c11 $c8
+		inactive_workspace	$c11 $c0 $c14
+		urgent_workspace	$c1 $c1 $c8
+		binding_mode		$c8 $c3 $c8
 	}
 }
 	## Second monitor.
@@ -87,15 +87,15 @@ bar {
 	status_command $STATUSBAR
 	colors{
 		background	$c8
-        statusline	$c12
-        separator	$c0
-		
+		statusline	$c12
+		separator	$c0
+
 		# Class				bor bag txt
-        focused_workspace   $c14 $c4 $c8
-        active_workspace    $c14 $c11 $c8
-        inactive_workspace  $c11 $c0 $c14
-        urgent_workspace    $c1 $c1 $c8
-        binding_mode        $c8 $c3 $c8
+		focused_workspace	$c14 $c4 $c8
+		active_workspace	$c14 $c11 $c8
+		inactive_workspace	$c11 $c0 $c14
+		urgent_workspace	$c1 $c1 $c8
+		binding_mode		$c8 $c3 $c8
 	}
 }
 
@@ -153,7 +153,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-		# Move focused window to workspace.
+	# Move focused window to workspace.
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -169,93 +169,93 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 		# Resize.
 mode "resize" {
 		## Resize mode keybindings.
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
 	bindsym l resize grow width 10 px or 10 ppt
 		## Return to default mode keybindings.
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 
 ##--Extra XF86 Keys--##
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $rstbar
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $rstbar
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $rstbar
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $rstbar
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $rstbar
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $rstbar
-# bindsym XF86PowerOff		exec
-# bindsym XF86Copy		exec
-# bindsym XF86Open		exec
-# bindsym XF86Paste		exec
-# bindsym XF86Cut		exec
-# bindsym XF86MenuKB		exec
-# bindsym XF86Calculator		exec
-# bindsym XF86Sleep		This binding is typically mapped by systemd automatically.
-# bindsym XF86WakeUp		exec
-# bindsym XF86Explorer		exec
-# bindsym XF86Send		exec
-# bindsym XF86Xfer		exec
-# bindsym XF86WWW			exec
-# bindsym XF86DOS		exec
-# bindsym XF86ScreenSaver		exec
-# bindsym XF86RotateWindows	exec
-# bindsym XF86TaskPane		exec
-# bindsym XF86Favorites		exec
-# bindsym XF86MyComputer		exec
-# bindsym XF86Back		exec
-# bindsym XF86Forward		exec
-# bindsym XF86Eject		exec
-# bindsym XF86AudioNext		exec
-# bindsym XF86AudioPlay		exec
-# bindsym XF86AudioPrev		exec
-# bindsym XF86AudioStop		exec
-# bindsym XF86AudioRecord
-# bindsym XF86AudioRewind		exec
-# bindsym XF86AudioForward	exec
-# bindsym XF86Phone		exec
-# bindsym XF86Tools		exec
-# bindsym XF86HomePage		exec
-# bindsym XF86Reload		restart
-# bindsym XF86ScrollUp		exec
-# bindsym XF86ScrollDown		exec
-# bindsym XF86New		exec
-# bindsym XF86LaunchA		exec
-# bindsym XF86LaunchB		exec
-# bindsym XF86Launch2		exec
-# bindsym XF86Launch3		exec
-# bindsym XF86Launch4		exec
-# bindsym XF86Launch5		exec
-# bindsym XF86Launch6		exec
-# bindsym XF86Launch7		exec
-# bindsym XF86Launch8		exec
-# bindsym XF86Launch9		exec
-# bindsym XF86TouchpadToggle	exec
-# bindsym XF86TouchpadOn		exec
-# bindsym XF86TouchpadOff		exec
-# bindsym XF86Suspend		exec
-# bindsym XF86Close		kill
-# bindsym XF86WebCam		exec
-# bindsym XF86Mail		exec
-# bindsym XF86Messenger		exec
-# bindsym XF86Search		exec
-# bindsym XF86Go			exec
-# bindsym XF86Finance		exec
-# bindsym XF86Game		exec
-# bindsym XF86Shop		exec
-# bindsym XF86MonBrightnessDown	exe
-# bindsym XF86MonBrightnessUp	exec
-# bindsym XF86AudioMedia		exec
-# bindsym XF86Display		exec
-# bindsym XF86KbdLightOnOff	exec
-# bindsym XF86KbdBrightnessDown	exec
-# bindsym XF86KbdBrightnessUp	exec
-# bindsym XF86Reply		exec
-# bindsym XF86MailForward	exec
-# bindsym XF86Save		exec
-# bindsym XF86Documents		exec 
-# bindsym XF86Battery		exec
-# bindsym XF86Bluetooth		exec
-# bindsym XF86WLAN		exec
+bindsym XF86AudioRaiseVolume		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $rstbar
+bindsym Shift+XF86AudioRaiseVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $rstbar
+bindsym XF86AudioLowerVolume		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $rstbar
+bindsym Shift+XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $rstbar
+bindsym XF86AudioMute				exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $rstbar
+# bindsym XF86AudioMicMute			exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $rstbar
+# bindsym XF86PowerOff				exec
+# bindsym XF86Copy					exec
+# bindsym XF86Open					exec
+# bindsym XF86Paste					exec
+# bindsym XF86Cut					exec
+# bindsym XF86MenuKB				exec
+# bindsym XF86Calculator			exec
+# bindsym XF86Sleep					This binding is typically mapped by systemd automatically.
+# bindsym XF86WakeUp				exec
+# bindsym XF86Explorer				exec
+# bindsym XF86Send					exec
+# bindsym XF86Xfer					exec
+# bindsym XF86WWW					exec
+# bindsym XF86DOS					exec
+# bindsym XF86ScreenSaver			exec
+# bindsym XF86RotateWindows			exec
+# bindsym XF86TaskPane				exec
+# bindsym XF86Favorites				exec
+# bindsym XF86MyComputer			exec
+# bindsym XF86Back					exec
+# bindsym XF86Forward				exec
+# bindsym XF86Eject					exec
+# bindsym XF86AudioNext				exec
+# bindsym XF86AudioPlay				exec
+# bindsym XF86AudioPrev				exec
+# bindsym XF86AudioStop				exec
+# bindsym XF86AudioRecord			exec
+# bindsym XF86AudioRewind			exec
+# bindsym XF86AudioForward			exec
+# bindsym XF86Phone					exec
+# bindsym XF86Tools					exec
+# bindsym XF86HomePage				exec
+# bindsym XF86Reload				restart
+# bindsym XF86ScrollUp				exec
+# bindsym XF86ScrollDown			exec
+# bindsym XF86New					exec
+# bindsym XF86LaunchA				exec
+# bindsym XF86LaunchB				exec
+# bindsym XF86Launch2				exec
+# bindsym XF86Launch3				exec
+# bindsym XF86Launch4				exec
+# bindsym XF86Launch5				exec
+# bindsym XF86Launch6				exec
+# bindsym XF86Launch7				exec
+# bindsym XF86Launch8				exec
+# bindsym XF86Launch9				exec
+# bindsym XF86TouchpadToggle		exec
+# bindsym XF86TouchpadOn			exec
+# bindsym XF86TouchpadOff			exec
+# bindsym XF86Suspend				exec
+# bindsym XF86Close					kill
+# bindsym XF86WebCam				exec
+# bindsym XF86Mail					exec
+# bindsym XF86Messenger				exec
+# bindsym XF86Search				exec
+# bindsym XF86Go					exec
+# bindsym XF86Finance				exec
+# bindsym XF86Game					exec
+# bindsym XF86Shop					exec
+# bindsym XF86MonBrightnessDown		exec
+# bindsym XF86MonBrightnessUp		exec
+# bindsym XF86AudioMedia			exec
+# bindsym XF86Display				exec
+# bindsym XF86KbdLightOnOff			exec
+# bindsym XF86KbdBrightnessDown		exec
+# bindsym XF86KbdBrightnessUp		exec
+# bindsym XF86Reply					exec
+# bindsym XF86MailForward			exec
+# bindsym XF86Save					exec
+# bindsym XF86Documents				exec
+# bindsym XF86Battery				exec
+# bindsym XF86Bluetooth				exec
+# bindsym XF86WLAN					exec
