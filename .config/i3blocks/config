@@ -8,25 +8,25 @@ separator=false
 separator_block_width=5
 markup=pango
 
-# [gpu]
-# label=
-# interval=10
+[gpu]
+interval=5
+label=
 # min_width=GPU 100% 100% 100% 100%
 # T_WARN=70
 # T_CRIT=90
 
 [cpu]
+interval=5
 label= 
-interval=10
 # min_width=CPU: 100.00%
 # T_WARN=50
 # T_CRIT=80
 # DECIMALS=2
 
 [memory]
+interval=5
 label=
 #i nstance=swap
-interval=30
 
 [volume]
 interval=once
@@ -50,18 +50,9 @@ AUDIO_LOW_SYMBOL= 
 # SUBSCRIBE=0
 
 [calendar]
+interval=1
 label= 
 DATEFMT=+%d/%b/%y %H:%M
 # SHORTFMT=+%H:%M:%S
 HEIGHT=180
 WIDTH=220
-interval=1
-
-# [time]
-# interval=1
-# TZ_FILE=~/.tz
-# STRFTIME_FORMAT=%m/%b/%y %H:%M
-# TZONES=$DEFAULT_TZ
-#  ,Brazil/East,Australia/Brisbane,Asia/Calcutta
-# TZ_LABELS=CUU
-#  ,Brazil,AU,Hyderabad
