@@ -23,6 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'mhinz/vim-signify'
 	Plug 'jmcantrell/vim-virtualenv'
 	Plug 'lervag/vimtex'
+	Plug 'KeitaNakamura/tex-conceal.vim'
 call plug#end()
 "" Commands for plug.
 " PlugInstall [name ...] [#threads]		Install plugins
@@ -34,19 +35,59 @@ call plug#end()
 " PlugSnapshot[!] [output path]			Generate script for restoring the current snapshot of the plugins
 
 ""---Basic configuration---""
-syntax on
-set number relativenumber
-set clipboard+=unnamedplus
-" set bg=dark
-" Set 1 tab = 4 spaces.
-set ts=4 sw=4
+	set encoding=utf-8
+	" set bg=dark
+	syntax on
+	set number relativenumber
+	set clipboard+=unnamedplus
+	
+
+	" Indentation
+	filetype plugin indent on
+	set tabstop=4
+	set shiftwidth=4
+	
+	" Spell checking
+	set spelllang=es_mx,en_us
+	autocmd FileType tex setlocal spell
+
+	" Leader key
+	let mapleader=' '
+	set showcmd
 
 ""---Plugin configuration---""
-	"" vim-airline
+	" vim-airline
 	let g:airline_powerline_fonts=1
 
-	"" vim-airline-themes
+	" vim-airline-themes
 	let g:airline_theme='solarized'
 
-	"" vim-signify
+	" vim-signify
 	set updatetime=100
+
+	" tex-conceal
+	set conceallevel=2
+	let g:tex_conceal="abdgm"
+
+	" nerdtree
+	let g:NERDTreeShowHidden=1
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+""---Keybindings---""
+	" Reload vim
+	nmap <F5> :source ~/.config/nvim/init.vim<CR>
+	
+	" Toggle relative line number
+	nmap <F2> :set number invrelativenumber<CR>
+	
+	" Toggle NERDTree
+	nmap <C-n> :NERDTreeToggle<CR>
+	
+	" Toggle Goyo
+	nmap <F8> :Goyo<CR>
+
+	" Split navigation
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
