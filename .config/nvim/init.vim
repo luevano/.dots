@@ -48,12 +48,23 @@ call plug#end()
 	set shiftwidth=4
 	
 	" Spell checking
-	set spelllang=es_mx,en_us
 	autocmd FileType tex setlocal spell
+	set spelllang=es_mx,en_us
 
 	" Leader key
-	let mapleader=' '
+	let mapleader='\'
 	set showcmd
+
+""---Custom functions---""
+	" Toggle spellchecking
+	function! ToggleSpellCheck()
+		set spell!
+		if &spell
+			echo "Spellcheck ON"
+		else
+			echo "Spellcheck OFF"
+		endif
+	endfunction
 
 ""---Plugin configuration---""
 	" vim-airline
@@ -64,6 +75,11 @@ call plug#end()
 
 	" vim-signify
 	set updatetime=100
+	
+	" vimtex
+	let g:tex_flavor='latex'
+	let g:vimtex_view_method=$READER
+    let g:vimtex_quickfix_mode=0
 
 	" tex-conceal
 	set conceallevel=2
@@ -91,3 +107,6 @@ call plug#end()
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+
+	" Spell checking
+	map <Leader>s :call ToggleSpellCheck()<CR>

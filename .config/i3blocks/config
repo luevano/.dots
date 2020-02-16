@@ -8,6 +8,11 @@ separator=false
 separator_block_width=5
 markup=pango
 
+[player]
+interval=5
+instance=spotify
+signal=1
+
 [gpu]
 interval=5
 label=
@@ -26,7 +31,7 @@ label=
 [memory]
 interval=5
 label=
-#i nstance=swap
+# instance=swap
 
 [volume]
 interval=once
