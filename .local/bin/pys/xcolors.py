@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 import os
 
-HOME=os.environ['HOME'] + '/'
-XCDIR=f'{HOME}.config/xcolors/'
-CSLIST=os.listdir(XCDIR)
-XRPATH=f'{HOME}.Xresources'
-ALPATH=f'{HOME}.config/alacritty/alacritty.yml'
+HOME = os.environ['HOME'] + '/'
+XCDIR = f'{HOME}.config/xcolors/'
+CSLIST = os.listdir(XCDIR)
+XRPATH = f'{HOME}.Xresources'
+ALPATH = f'{HOME}.config/alacritty/alacritty.yml'
+file_dir = f'{HOME}/test'
 
 
 def update_xresources(csname):
@@ -56,5 +57,5 @@ def update_alacritty(csname):
                 outfile.write(line)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     print('Test')
