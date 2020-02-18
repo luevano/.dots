@@ -3,7 +3,7 @@
 "
 
 ""---Auto installs vim-plug---""
-" let autoload_plug_path = '~/.config/nvim/autoload/plug.vim'
+" let autoload_plug_path='~/.config/nvim/autoload/plug.vim'
 " if !filereadable(autoload_plug_path)
 "	echo "Downloading junegunn/vim-plug to manage plugins..."
 "	silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
@@ -130,6 +130,18 @@
 	" SympylFold
 	let g:SympylFold_docstring_preview=1
 
+	" YouCompleteMe
+	let g:ycm_autoclose_preview_window_after_completion=1
+
+	" syntastic
+	" set statusline+=%#warningmsg#
+	" set statusline+=%{SyntasticStatuslineFlag()}
+	" set statusline+=%*
+	let g:syntastic_always_populate_loc_list=1
+	let g:syntastic_auto_loc_list=1
+	let g:syntastic_check_on_open=1
+	let g:syntastic_check_on_wq=0
+
 ""---Keybindings---""
 	" Reload vim
 	nmap <F5> :source ~/.config/nvim/init.vim<CR>
@@ -159,15 +171,4 @@
 	nnoremap <Space> za
 
 	" YouCompleteMe
-	let g:ycm_autoclose_preview_window_after_completion=1
 	map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-	" syntastic
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0

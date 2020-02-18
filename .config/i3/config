@@ -66,6 +66,7 @@ font pango:monospace 10
 	# WS3
 	# WS4
 	# WS5
+	assign [class="vlc"] $ws5
 	# WS6
 	assign [class="Google-chrome"] $ws6
 	# WS7
