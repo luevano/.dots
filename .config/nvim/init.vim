@@ -16,13 +16,15 @@
 	call plug#begin('~/.config/nvim/plugged')
 		Plug 'mboughaba/i3config.vim'
 		Plug 'junegunn/goyo.vim'
-		Plug 'preservim/nerdtree'
-		Plug 'Xuyuanp/nerdtree-git-plugin'
+		" Plug 'preservim/nerdtree'
+		" Plug 'Xuyuanp/nerdtree-git-plugin'
 		Plug 'vim-airline/vim-airline'
 		Plug 'vim-airline/vim-airline-themes'
 		Plug 'mhinz/vim-signify'
+		" TeX
 		Plug 'lervag/vimtex'
 		Plug 'KeitaNakamura/tex-conceal.vim'
+		" Python
 		Plug 'tmhedberg/SimpylFold'
 		Plug 'vim-scripts/indentpython.vim'
 		Plug 'Valloric/YouCompleteMe'
@@ -75,7 +77,7 @@
 		\ set shiftwidth=4 |
 		\ set textwidth=79 |
 		\ set expandtab |
-		\ set fileformat=unix
+		\ set fileformat=unix |
 	au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 	let python_highlight_all=1
 
@@ -83,7 +85,10 @@
 	set showbreak=↪\
 	set listchars=eol:↲,nbsp:␣,tab:»\ ,trail:•,precedes:⟨,extends:⟩
 
-	""---Custom functions---""
+	" Buffers.
+	nnoremap gb :ls<CR>:buffer<Space>
+
+""---Custom functions---""
 	" Toggle spellchecking
 	function! ToggleSpellCheck()
 		set spell!
@@ -123,9 +128,9 @@
 	set conceallevel=2
 	let g:tex_conceal="abdgm"
 
-	" nerdtree
-	let g:NERDTreeShowHidden=1
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	" NERDTree
+	" let g:NERDTreeShowHidden=1
+	" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 	" SympylFold
 	let g:SympylFold_docstring_preview=1
@@ -150,7 +155,7 @@
 	nmap <F2> :set number invrelativenumber<CR>
 
 	" Toggle NERDTree
-	nmap <C-n> :NERDTreeToggle<CR>
+	" nmap <C-n> :NERDTreeToggle<CR>
 
 	" Toggle Goyo
 	nmap <F8> :Goyo<CR>
