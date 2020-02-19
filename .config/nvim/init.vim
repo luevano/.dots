@@ -14,6 +14,9 @@
 
 ""---Loads plugins---""
 	call plug#begin('~/.config/nvim/plugged')
+		" Colorscheme
+		Plug 'altercation/vim-colors-solarized'
+		" Other
 		Plug 'mboughaba/i3config.vim'
 		Plug 'junegunn/goyo.vim'
 		" Plug 'preservim/nerdtree'
@@ -48,9 +51,11 @@
 	set showcmd
 
 	" Basic
+	syntax enable
+	set background=dark
+	colorscheme solarized
+	hi Normal ctermbg=NONE " Just so alacritty can use transparency.
 	set encoding=utf-8
-	" set bg=dark
-	syntax on
 	set number relativenumber
 	set clipboard+=unnamedplus
 
