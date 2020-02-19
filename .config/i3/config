@@ -10,6 +10,9 @@ gaps inner 5
 gaps outer 5
 set $mod Mod4
 font pango:monospace 10
+## Gaps defaults.
+	set $gi "5"
+	set $go "5"
 ## i3config variables.
 	set $mon1 "HDMI-0"
 	set $mon2 "DP-0"
@@ -194,11 +197,26 @@ client.background		$c15
 ## Modes.
 	# Resize.
 	mode "resize" {
-			# Resize mode keybindings.
-		bindsym h resize shrink width 10 px or 10 ppt
-		bindsym j resize grow height 10 px or 10 ppt
-		bindsym k resize shrink height 10 px or 10 ppt
-		bindsym l resize grow width 10 px or 10 ppt
+			# Container resizing.
+		bindsym h resize shrink width 1 px or 1 ppt
+		bindsym Shift+h resize shrink width 5 px or 5 ppt
+		bindsym Ctrl+h resize shrink width 10 px or 10 ppt
+		bindsym j resize grow height 1 px or 1 ppt
+		bindsym Shift+j resize grow height 5 px or 5 ppt
+		bindsym Ctrl+j resize grow height 10 px or 10 ppt
+		bindsym k resize shrink height 1 px or 1 ppt
+		bindsym Shift+k resize shrink height 5 px or 5 ppt
+		bindsym Ctrl+k resize shrink height 10 px or 10 ppt
+		bindsym l resize grow width 1 px or 1 ppt
+		bindsym Shift+l resize grow width 5 px or 5 ppt
+		bindsym Ctrl+l resize grow width 10 px or 10 ppt
+			# Gaps resizing.
+		bindsym plus gaps outer current plus 1
+		bindsym Shift+plus gaps inner current plus 1
+		bindsym minus gaps outer current minus 1
+		bindsym Shift+minus gaps inner current minus 1
+		bindsym g gaps inner all set $gi, gaps outer all set $go
+		bindsym Shift+g gaps inner all set 0, gaps outer all set 0
 			# Return to default mode keybindings.
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
