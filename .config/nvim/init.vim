@@ -1,6 +1,8 @@
 "
 " ~/.config/nvim/init.vim
 "
+let mapleader=','
+set showcmd
 
 ""---Auto installs vim-plug---""
 " let autoload_plug_path='~/.config/nvim/autoload/plug.vim'
@@ -16,24 +18,52 @@
 	call plug#begin('~/.config/nvim/plugged')
 		" Colorscheme
 		Plug 'altercation/vim-colors-solarized'
+
 		" Other
 		Plug 'mboughaba/i3config.vim'
 		Plug 'junegunn/goyo.vim'
-		" Plug 'preservim/nerdtree'
-		" Plug 'Xuyuanp/nerdtree-git-plugin'
+		Plug 'preservim/nerdtree'
+			let g:NERDTreeShowHidden=1
+			autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+		"Airline
 		Plug 'vim-airline/vim-airline'
+			let g:airline_powerline_fonts=1
 		Plug 'vim-airline/vim-airline-themes'
+			let g:airline_theme='solarized'
+
+		" Git
+		Plug 'Xuyuanp/nerdtree-git-plugin'
 		Plug 'mhinz/vim-signify'
+			set updatetime=100
+
+		" Auto completion
+		Plug 'Valloric/YouCompleteMe'
+			let g:ycm_autoclose_preview_window_after_completion=1
+
 		" TeX
 		Plug 'lervag/vimtex'
+			let g:tex_flavor='latex'
+			let g:vimtex_view_method=$READER
+			let g:vimtex_quickfix_mode=0
 		Plug 'KeitaNakamura/tex-conceal.vim'
+			set conceallevel=2
+			let g:tex_conceal="abdgm"
+
 		" Python
 		Plug 'tmhedberg/SimpylFold'
+			let g:SympylFold_docstring_preview=1
 		Plug 'vim-scripts/indentpython.vim'
-		Plug 'Valloric/YouCompleteMe'
 		Plug 'jmcantrell/vim-virtualenv'
 		Plug 'Yggdroot/indentLine'
 		Plug 'vim-syntastic/syntastic'
+			" set statusline+=%#warningmsg#
+			" set statusline+=%{SyntasticStatuslineFlag()}
+			" set statusline+=%*
+			let g:syntastic_always_populate_loc_list=1
+			let g:syntastic_auto_loc_list=1
+			let g:syntastic_check_on_open=1
+			let g:syntastic_check_on_wq=0
 		Plug 'nvie/vim-flake8'
 	call plug#end()
 	"" Commands for plug.
@@ -46,15 +76,11 @@
 	" PlugSnapshot[!] [output path]			Generate script for restoring the current snapshot of the plugins
 
 ""---Basic configuration---""
-	" Leader key
-	let mapleader='\'
-	set showcmd
-
-	" Basic
 	syntax enable
 	set background=dark
 	colorscheme solarized
-	hi Normal ctermbg=NONE " Just so alacritty can use transparency.
+	" Just so alacritty can use transparency.
+	hi Normal ctermbg=NONE
 	set encoding=utf-8
 	set number relativenumber
 	set clipboard+=unnamedplus
@@ -82,9 +108,8 @@
 		\ set shiftwidth=4 |
 		\ set textwidth=79 |
 		\ set expandtab |
-		\ set fileformat=unix |
+		\ set fileformat=unix
 	au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-	let python_highlight_all=1
 
 	" Listchars
 	set showbreak=↪\
@@ -114,56 +139,12 @@
 		endif
 	endfunction
 
-""---Plugin configuration---""
-	" vim-airline
-	let g:airline_powerline_fonts=1
-
-	" vim-airline-themes
-	let g:airline_theme='solarized'
-
-	" vim-signify
-	set updatetime=100
-
-	" vimtex
-	let g:tex_flavor='latex'
-	let g:vimtex_view_method=$READER
-	let g:vimtex_quickfix_mode=0
-
-	" tex-conceal
-	set conceallevel=2
-	let g:tex_conceal="abdgm"
-
-	" NERDTree
-	" let g:NERDTreeShowHidden=1
-	" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-	" SympylFold
-	let g:SympylFold_docstring_preview=1
-
-	" YouCompleteMe
-	let g:ycm_autoclose_preview_window_after_completion=1
-
-	" syntastic
-	" set statusline+=%#warningmsg#
-	" set statusline+=%{SyntasticStatuslineFlag()}
-	" set statusline+=%*
-	let g:syntastic_always_populate_loc_list=1
-	let g:syntastic_auto_loc_list=1
-	let g:syntastic_check_on_open=1
-	let g:syntastic_check_on_wq=0
-
-""---Keybindings---""
+""---Vanilla vim keybindings---""
 	" Reload vim
 	nmap <F5> :source ~/.config/nvim/init.vim<CR>
 
 	" Toggle relative line number
 	nmap <F2> :set number invrelativenumber<CR>
-
-	" Toggle NERDTree
-	" nmap <C-n> :NERDTreeToggle<CR>
-
-	" Toggle Goyo
-	nmap <F8> :Goyo<CR>
 
 	" Split navigation
 	map <C-h> <C-w>h
@@ -171,14 +152,21 @@
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
 
+	" Enable folding with the spacebar
+	nnoremap <Space> za
+
 	" Spell checking
 	map <Leader>s :call ToggleSpellCheck()<CR>
 
 	" List chars
 	map <Leader>c :call ToggleListChars()<CR>
 
-	" Enable folding with the spacebar
-	nnoremap <Space> za
+""---Plugin keybindings---""
+	" Toggle NERDTree
+	nmap <C-n> :NERDTreeToggle<CR>
+
+	" Goyo
+	nmap <F8> :Goyo<CR>
 
 	" YouCompleteMe
 	map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
