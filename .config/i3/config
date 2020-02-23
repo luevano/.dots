@@ -5,7 +5,6 @@
 ##---Basic definitions---##
 exec_always feh --bg-fill ~/pix/wp/starwars_1.png
 for_window [class=".*"] border pixel 2
-for_window [class="Yad"] floating enable
 gaps inner 5
 gaps outer 5
 set $mod Mod4
@@ -78,10 +77,13 @@ font pango:monospace 10
 	# WS9
 	# WS10
 	assign [class="Spotify"] $ws10
+## Window properties for windows.
+	for_window [class="Yad"] floating enable
+	for_window [class="mogli"] floating enable
 
 ##---i3 color scheme---##
 # Class					bor bgt txt ind chb
-client.focused			$c14	$c4 $c8 $c4 $c6
+client.focused			$c14 $c4 $c8 $c4 $c6
 client.focused_inactive	$c0 $c0 $c14 $c11 $c0
 client.unfocused		$c0 $c8 $c14 $c0 $c0
 client.urgent			$c1 $c1 $c8 $c1 $c1
@@ -143,18 +145,20 @@ client.background		$c15
 ## Navigation and window options.
 	# Basics.
 	bindsym $mod+Shift+q kill
-	bindsym $mod+r mode "resize"
 	floating_modifier $mod
 	bindsym $mod+Shift+g split h
 	bindsym $mod+Shift+v split v
 	bindsym $mod+f fullscreen toggle
+
+	# Modes.
+	bindsym $mod+r mode "resize"
 
 	# Focus.
 	bindsym $mod+h focus left
 	bindsym $mod+j focus down
 	bindsym $mod+k focus up
 	bindsym $mod+l focus right
-	# bindsym $mod+space focus mode_toggle
+	bindsym $mod+space focus mode_toggle
 	# bindsym $mod+a focus parent
 	# bindsym $mod+d focus child
 
@@ -163,6 +167,9 @@ client.background		$c15
 	bindsym $mod+Shift+j move down
 	bindsym $mod+Shift+k move up
 	bindsym $mod+Shift+l move right
+
+	# Window.
+	bindsym $mod+Shift+space floating toggle
 
 	# Container layout.
 	bindsym $mod+s layout stacking
