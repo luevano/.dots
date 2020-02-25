@@ -15,12 +15,18 @@ font pango:monospace 10
 ## i3config variables.
 	set $mon1 "HDMI-0"
 	set $mon2 "DP-0"
+	set $dmenu --no-startup-id i3-dmenu-desktop
 	set $term --no-startup-id $TERMINAL
-	set $fmgr --no-startup-id $FILE
+	# Really no need in making this variable...
+	set $fmgr $FILE
 	set $ibwsr --no-startup-id $BROWSER
 	set $edit --no-startup-id $EDITOR
 	set $read --no-startup-id $READER
 	set $rstbar pkill -RTMIN+1 $STATUSBAR
+	set $music --no-startup-id spotify
+	set $msgs --no-startup-id telegram-desktop
+	set $ss --no-startup-id flameshot
+	set $sspath "$HOME/pix/ss/"
 ## Colors from ~/.Xresources.
 	# set_from_resource $bg background
 	# set_from_resource $fg foreground
@@ -70,13 +76,13 @@ font pango:monospace 10
 	# WS5
 	assign [class="vlc"] $ws5
 	# WS6
-	assign [class="Google-chrome"] $ws6
+	# assign [class="Google-chrome"] $ws6
 	# WS7
-	assign [class="TelegramDesktop"] $ws7
+	# assign [class="TelegramDesktop"] $ws7
 	# WS8
 	# WS9
 	# WS10
-	assign [class="Spotify"] $ws10
+	# assign [class="Spotify"] $ws10
 ## Window properties for windows.
 	for_window [class="Yad"] floating enable
 	for_window [class="mogli"] floating enable
@@ -136,11 +142,20 @@ client.background		$c15
 	bindsym $mod+Shift+r restart
 	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-## Run commands
+## Apps.
 	bindsym $mod+Return exec $term
+	bindsym $mod+Delete exec $term -e htop
+	bindsym $mod+Shift+w workspace $ws6; layout stacked; exec $ibwsr
+	bindsym $mod+Shift+f workspace $ws4; exec $term -e $fmgr
+	bindsym $mod+m workspace $ws10; exec $music
+	bindsym $mod+Shift+m workspace $ws7; exec $msgs
+	# Screenshots.
+	bindsym Print exec $ss gui
+	bindsym $mod+Print exec $ss full -c
+	bindsym $mod+Shift+Print exec $ss full -p $sspath
 
 ## Dmenu.
-	bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+	bindsym $mod+d exec $dmenu
 
 ## Navigation and window options.
 	# Basics.
