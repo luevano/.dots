@@ -211,7 +211,7 @@ key_bindings:
   - { key: Copy,                                action: Copy}
   - { key: L,           mods: Control,          action: ClearLogNotice}
   - { key: L,           mods: Control,          chars: "\x0c"}
-  - { key: K,           mods: Shift,            action: ScrollPageUp,       mode: ~Alt}
-  - { key: J,           mods: Shift,            action: ScrollPageDown,     mode: ~Alt}
-  - { key: H,           mods: Shift,            action: ScrollToTop,        mode: ~Alt}
-  - { key: L,           mods: Shift,            action: ScrollToBottom,     mode: ~Alt}
+  - { key: K,           mods: Control|Shift,            action: ScrollPageUp,       mode: ~Alt}
+  - { key: J,           mods: Control|Shift,            action: ScrollPageDown,     mode: ~Alt}
+  - { key: H,           mods: Control|Shift,            action: ScrollToTop,        mode: ~Alt}
+  - { key: L,           mods: Control|Shift,            action: ScrollToBottom,     mode: ~Alt}

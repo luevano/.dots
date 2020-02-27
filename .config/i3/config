@@ -145,7 +145,7 @@ client.background		$c15
 ## Apps.
 	bindsym $mod+Return exec $term
 	bindsym $mod+Delete exec $term -e htop
-	bindsym $mod+Shift+w workspace $ws6; layout stacked; exec $ibwsr
+	bindsym $mod+Shift+w workspace $ws6; exec $ibwsr
 	bindsym $mod+Shift+f workspace $ws4; exec $term -e $fmgr
 	bindsym $mod+m workspace $ws10; exec $music
 	bindsym $mod+Shift+m workspace $ws7; exec $msgs
