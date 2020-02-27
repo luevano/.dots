@@ -1,26 +1,4 @@
 #!/usr/bin/env perl
-# Copyright (C) 2014 Tony Crisci <tony@dubstepdish.com>
-# Copyright (C) 2015 Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-# Requires playerctl binary to be in your path (except cmus)
-# See: https://github.com/acrisci/playerctl
-
-# Set instance=NAME in the i3blocks configuration to specify a music player
-# (playerctl will attempt to connect to org.mpris.MediaPlayer2.[NAME] on your
-# DBus session).
 
 use Time::HiRes qw(usleep);
 use Env qw(BLOCK_INSTANCE);
@@ -28,6 +6,7 @@ use Env qw(BLOCK_INSTANCE);
 use constant DELAY => 50; # Delay in ms to let network-based players (spotify) reflect new data.
 use constant SPOTIFY_STR => 'spotify';
 
+my $label = $ENV{LABEL} // "";
 my @metadata = ();
 my $player_arg = "";
 
@@ -83,6 +62,7 @@ sub buttons {
     }
 }
 
+print("$label ");
 sub cmus {
     my @cmus = split /^/, qx(cmus-remote -Q);
     if ($? == 0) {
