@@ -100,7 +100,7 @@ client.background		$c15
 ## Primary monitor.
 	bar {
 		output $mon1
-		tray_output none
+		tray_output $mon1
 		position top
 		status_command $STATUSBAR
 		colors{
@@ -119,7 +119,7 @@ client.background		$c15
 ## Second monitor.
 	bar {
 		output $mon2
-		tray_output $mon2
+		tray_output none
 		position top
 		status_command $STATUSBAR
 		colors{

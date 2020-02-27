@@ -10,19 +10,20 @@ markup=pango
 
 [player]
 interval=5
+label=
 instance=spotify
 signal=1
 
 [gpu]
 interval=5
-label=
+label=
 # min_width=GPU 100% 100% 100% 100%
 # T_WARN=70
 # T_CRIT=90
 
 [cpu]
 interval=5
-label= 
+label=
 # min_width=CPU: 100.00%
 # T_WARN=50
 # T_CRIT=80
@@ -31,9 +32,9 @@ label=
 [memory]
 interval=5
 label=
-# instance=swap
+type=mem
 
-[volume]
+[volume-pulseaudio]
 interval=once
 signal=1
 # MIXER=[determined automatically]
@@ -56,7 +57,7 @@ AUDIO_LOW_SYMBOL= 
 
 [calendar]
 interval=1
-label= 
+label=
 DATEFMT=+%d/%b/%y %H:%M
 # SHORTFMT=+%H:%M:%S
 HEIGHT=180
