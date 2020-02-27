@@ -36,5 +36,5 @@ case "$BLOCK_BUTTON" in 1)
 		> /dev/null"
 esac
 
-echo "$LABEL$(date "$DATEFMT")"
-echo "$LABEL$(date "$SHORTFMT")"
+echo "$LABEL $(date "$DATEFMT")"
+echo "$LABEL $(date "$SHORTFMT")"
