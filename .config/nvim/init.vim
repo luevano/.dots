@@ -7,10 +7,10 @@ set showcmd
 ""---Auto installs vim-plug---""
 " let autoload_plug_path='~/.config/nvim/autoload/plug.vim'
 " if !filereadable(autoload_plug_path)
-"	echo "Downloading junegunn/vim-plug to manage plugins..."
-"	silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
-"		\ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
-"	autocmd VimEnter * PlugInstall
+" 	echo "Downloading junegunn/vim-plug to manage plugins..."
+" 	silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
+" 				\ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
+" 	autocmd VimEnter * PlugInstall
 " endif
 " unlet autoload_plug_path
 
