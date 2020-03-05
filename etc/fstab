@@ -11,7 +11,8 @@ UUID=091B-9B6F      							/boot			vfat      	rw,relatime,fmask=0022,dmask=0022,
 UUID=835a9368-2084-4e28-b514-ec62abca7433		/home     		ext4      	rw,relatime	0 2
 
 # /dev/sda6
-UUID=5192ace9-d0f4-4777-b94c-ccf6ae01e8e0		none      		swap      	defaults  	0 0
+# UUID=5192ace9-d0f4-4777-b94c-ccf6ae01e8e0		none      		swap      	defaults  	0 0
+UUID=781e3f0c-cd64-4528-9a67-8211af64e90b		none      		swap      	defaults  	0 0
 
 # /dev/sda4 # Windows partition (main)
 UUID=8A9C4E009C4DE773							/media/Windows	ntfs		uid=luevano,gid=wheel,dmask=022,fmask=133,nosuid,dev,windows_names,auto	0 2
