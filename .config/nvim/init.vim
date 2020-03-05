@@ -16,8 +16,9 @@ set showcmd
 
 ""---Loads plugins---""
 	call plug#begin('~/.config/nvim/plugged')
-		" Colorscheme
+		" Color schemes
 		Plug 'altercation/vim-colors-solarized'
+		Plug 'dracula/vim'
 
 		" Other
 		Plug 'mboughaba/i3config.vim'
@@ -30,7 +31,7 @@ set showcmd
 		Plug 'vim-airline/vim-airline'
 			let g:airline_powerline_fonts=1
 		Plug 'vim-airline/vim-airline-themes'
-			let g:airline_theme='solarized'
+			let g:airline_theme='dracula'
 
 		" Git
 		Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -78,7 +79,7 @@ set showcmd
 ""---Basic configuration---""
 	syntax enable
 	set background=dark
-	colorscheme solarized
+	colorscheme dracula
 	" Just so alacritty can use transparency.
 	hi Normal ctermbg=NONE
 	set encoding=utf-8
