@@ -19,6 +19,11 @@ export ZDOTDIR="$HOME/.config/zsh"
 	## Program settings.
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+	## Ruby
+if command -v ruby >/dev/null 2>&1; then
+	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+fi
+
 	## Tensorflow.
 export TF_CPP_MIN_LOG_LEVEL="1"
 	# 0 = all messages are logged (default behavior)
