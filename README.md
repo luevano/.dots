@@ -1,2 +1,2 @@
-# .dotfiles
+# .dots
 My personal dotfiles.
