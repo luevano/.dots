@@ -115,9 +115,6 @@ set showcmd
 	set showbreak=↪\
 	set listchars=eol:↲,nbsp:␣,tab:»\ ,trail:•,precedes:⟨,extends:⟩
 
-	" Buffers.
-	nnoremap gb :ls<CR>:buffer<Space>
-
 ""---Custom functions---""
 	" Toggle spellchecking
 	function! ToggleSpellCheck()
@@ -147,19 +144,24 @@ set showcmd
 	nmap <F2> :set number invrelativenumber<CR>
 
 	" Split navigation
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+	nmap <C-h> <C-w>h
+	nmap <C-j> <C-w>j
+	nmap <C-k> <C-w>k
+	nmap <C-l> <C-w>l
 
 	" Enable folding with the spacebar
 	nnoremap <Space> za
 
 	" Spell checking
-	map <Leader>s :call ToggleSpellCheck()<CR>
+	nmap <Leader>s :call ToggleSpellCheck()<CR>
 
 	" List chars
-	map <Leader>c :call ToggleListChars()<CR>
+	nmap <Leader>c :call ToggleListChars()<CR>
+
+	" Buffers.
+	nnoremap gb :ls<CR>:buffer<Space>
+	nmap <Leader>a :badd<Space>
+	nmap <Leader>l :ls<CR>
 
 ""---Plugin keybindings---""
 	" Toggle NERDTree
