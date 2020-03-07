@@ -16,13 +16,8 @@ export STATUSBAR="i3blocks"
 	## ~/ cleanup.
 export ZDOTDIR="$HOME/.config/zsh"
 
-	## Program settings.
+	## Ranger.
 export RANGER_LOAD_DEFAULT_RC=FALSE
-
-	## Ruby
-if command -v ruby >/dev/null 2>&1; then
-	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-fi
 
 	## Tensorflow.
 export TF_CPP_MIN_LOG_LEVEL="1"
@@ -30,3 +25,11 @@ export TF_CPP_MIN_LOG_LEVEL="1"
 	# 1 = INFO messages are not printed
 	# 2 = INFO and WARNING messages are not printed
 	# 3 = INFO, WARNING, and ERROR messages are not printed
+
+	## Ruby
+if command -v ruby >/dev/null 2>&1; then
+	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+fi
+
+	## Jupyter lab.
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab

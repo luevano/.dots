@@ -10,3 +10,4 @@ dunst & 		# Notifications.
 nm-applet & 	# Network manager.
 udiskie & 		# Drive mounting.
 flameshot &		# Screenshots.
+pasystray &		# Pulse Audio tray icon.
