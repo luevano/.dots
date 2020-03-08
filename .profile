@@ -32,4 +32,8 @@ if command -v ruby >/dev/null 2>&1; then
 fi
 
 	## Jupyter lab.
+export JUPYTER_CONFIG_DIR=$HOME/.config/jupyter
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+
+	## iPython.
+export IPYTHONDIR=$HOME/.config/ipython
