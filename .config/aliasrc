@@ -6,4 +6,4 @@
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Colorize commands when possible.
-alias ls="ls -AGh --color=auto --group-directories-first"
+alias ls="exa -aH --color=automatic --group-directories-first --git"
