@@ -5,13 +5,13 @@
 ##---Basic definitions---##
 exec_always feh --bg-fill ~/pix/wp/starwars_1.png
 for_window [class=".*"] border pixel 2
-gaps inner 5
-gaps outer 5
+gaps inner 0
+gaps outer 0
 set $mod Mod4
 font pango:monospace 10
 ## Gaps defaults.
 	set $gi "5"
-	set $go "5"
+	set $go "10"
 ## i3config variables.
 	set $mon1 "HDMI-0"
 	set $mon2 "DP-0"
