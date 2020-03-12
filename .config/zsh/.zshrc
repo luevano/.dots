@@ -13,7 +13,7 @@ PS1="%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]
 [[ -f $HOME/.config/aliasrc ]] && . ~/.config/aliasrc
 
 # History cache.
-HISTFILE=~/.cache/zsh/history
+HISTFILE=$HOME/.cache/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd

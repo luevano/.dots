@@ -48,7 +48,7 @@ set showcmd
 			let g:vimtex_view_method=$READER
 			let g:vimtex_quickfix_mode=0
 		Plug 'KeitaNakamura/tex-conceal.vim'
-			set conceallevel=2
+			set conceallevel=0
 			let g:tex_conceal="abdgm"
 
 		" Python
@@ -57,15 +57,20 @@ set showcmd
 		Plug 'vim-scripts/indentpython.vim'
 		Plug 'jmcantrell/vim-virtualenv'
 		Plug 'Yggdroot/indentLine'
+		Plug 'nvie/vim-flake8'
+
+		" Syntax
 		Plug 'vim-syntastic/syntastic'
-			" set statusline+=%#warningmsg#
-			" set statusline+=%{SyntasticStatuslineFlag()}
-			" set statusline+=%*
+			set statusline+=%#warningmsg#
+			set statusline+=%{SyntasticStatuslineFlag()}
+			set statusline+=%*
 			let g:syntastic_always_populate_loc_list=1
 			let g:syntastic_auto_loc_list=1
 			let g:syntastic_check_on_open=1
 			let g:syntastic_check_on_wq=0
-		Plug 'nvie/vim-flake8'
+			let g:syntastic_latex_lacheck_quiet_messsages={
+				\ "!level": "errors",
+				\ "regex": 'possible'}
 	call plug#end()
 	"" Commands for plug.
 	" PlugInstall [name ...] [#threads]		Install plugins
