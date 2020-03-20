@@ -30,13 +30,24 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser(description='Memefy some dank text.')
 
     parser.add_argument('text', help='Text to memefy')
+    parser.add_argument('-m', help='Exchange uppercase by lowercase letters and viceversa, randomly.', action='store_true')
+    parser.add_argument('-i', help='Exchange vocals by i.', action='store_true')
+    parser.add_argument('-c', help='Combine M and I', action='store_true')
+    parser.add_argument('-s', help='Spongemock appears', action='store_true')
     
     args = parser.parse_args()
 
-    print(chvoctoi(args.text))
-    print(memefy(args.text))
-    print(memefy(chvoctoi(args.text)))
-    print('                                               ixzii:`                                                                                                 \n',
+    if args.i:
+        print(chvoctoi(args.text))
+
+    if args.m:
+        print(memefy(args.text))
+
+    if args.c:
+        print(memefy(chvoctoi(args.text)))
+
+    if args.s:
+        print('                                               ixzii:`                                                                                                 \n',
 '                                              `MW@;`:*,                                                                                               \n',
 '                                              *x@#:*.`*.                                                                                              \n',
 '                                             .*`.``.+`.*                                                                                              \n',
