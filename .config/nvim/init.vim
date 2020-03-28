@@ -43,21 +43,21 @@ set showcmd
 			let g:ycm_autoclose_preview_window_after_completion=1
 
 		" TeX
-		Plug 'lervag/vimtex'
+		Plug 'lervag/vimtex', {'for': 'tex'}
 			let g:tex_flavor='latex'
 			let g:vimtex_view_method=$READER
 			let g:vimtex_quickfix_mode=0
-		Plug 'KeitaNakamura/tex-conceal.vim'
-			set conceallevel=0
+		Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+			set conceallevel=2
 			let g:tex_conceal="abdgm"
 
 		" Python
-		Plug 'tmhedberg/SimpylFold'
+		Plug 'tmhedberg/SimpylFold', {'for': 'py'}
 			let g:SympylFold_docstring_preview=1
-		Plug 'vim-scripts/indentpython.vim'
-		Plug 'jmcantrell/vim-virtualenv'
-		Plug 'Yggdroot/indentLine'
-		Plug 'nvie/vim-flake8'
+		Plug 'vim-scripts/indentpython.vim', {'for': 'py'}
+		Plug 'jmcantrell/vim-virtualenv', {'for': 'py'}
+		Plug 'Yggdroot/indentLine', {'for': 'py'}
+		Plug 'nvie/vim-flake8', {'for': 'py'}
 
 		" Syntax
 		Plug 'vim-syntastic/syntastic'
@@ -68,9 +68,9 @@ set showcmd
 			let g:syntastic_auto_loc_list=1
 			let g:syntastic_check_on_open=1
 			let g:syntastic_check_on_wq=0
-			let g:syntastic_latex_lacheck_quiet_messsages={
-				\ "!level": "errors",
-				\ "regex": 'possible'}
+			let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
+			let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
+
 	call plug#end()
 	"" Commands for plug.
 	" PlugInstall [name ...] [#threads]		Install plugins
