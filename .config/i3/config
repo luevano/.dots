@@ -13,8 +13,8 @@ font pango:monospace 10
 	set $gi "5"
 	set $go "10"
 ## i3config variables.
-	set $mon1 "HDMI-0"
-	set $mon2 "DP-0"
+	set $mon2 "HDMI-0"
+	set $mon1 "DP-0"
 	set $dmenu --no-startup-id i3-dmenu-desktop
 	set $term --no-startup-id $TERMINAL
 	# Really no need in making this variable...

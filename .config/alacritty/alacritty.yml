@@ -29,9 +29,9 @@ window:
 scrolling:
   history: 10000
   multiplier: 1
-  auto_scroll: true
+  # auto_scroll: true
 
-tabspaces: 4
+# tabspaces: 4
 
 font:
   normal:
@@ -113,7 +113,7 @@ schemes:
 
 colors: *dracula
 
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 #  color: '0xffffff'
