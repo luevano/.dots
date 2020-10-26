@@ -5,9 +5,9 @@
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.
 
+nm-applet & 	# Network Manager.
 picom &			# Transparency and stuff.
 dunst & 		# Notifications.
-nm-applet & 	# Network manager.
 udiskie & 		# Drive mounting.
 flameshot &		# Screenshots.
 pasystray &		# Pulse Audio tray icon.

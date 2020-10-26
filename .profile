@@ -19,8 +19,11 @@ export ZDOTDIR="$HOME/.config/zsh"
 	## Ranger.
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+	## CUDA.
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
+
 	## Tensorflow.
-export TF_CPP_MIN_LOG_LEVEL="1"
+export TF_CPP_MIN_LOG_LEVEL="0"
 	# 0 = all messages are logged (default behavior)
 	# 1 = INFO messages are not printed
 	# 2 = INFO and WARNING messages are not printed
