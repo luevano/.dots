@@ -40,3 +40,7 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 	## iPython.
 export IPYTHONDIR=$HOME/.config/ipython
+
+	## TexLive.
+export TEXMFDIST=/usr/share/texmf-dist
+export TEXMFHOME=$HOME/.local/share/texmf
