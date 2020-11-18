@@ -43,21 +43,21 @@ set showcmd
 			let g:ycm_autoclose_preview_window_after_completion=1
 
 		" TeX
-		Plug 'lervag/vimtex', {'for': 'tex'}
+		Plug 'lervag/vimtex'
 			let g:tex_flavor='latex'
 			let g:vimtex_view_method=$READER
 			let g:vimtex_quickfix_mode=0
-		Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+		Plug 'KeitaNakamura/tex-conceal.vim'
 			set conceallevel=2
 			let g:tex_conceal="abdgm"
 
 		" Python
-		Plug 'tmhedberg/SimpylFold', {'for': 'py'}
+		Plug 'tmhedberg/SimpylFold'
 			let g:SympylFold_docstring_preview=1
-		Plug 'vim-scripts/indentpython.vim', {'for': 'py'}
-		Plug 'jmcantrell/vim-virtualenv', {'for': 'py'}
-		Plug 'Yggdroot/indentLine', {'for': 'py'}
-		Plug 'nvie/vim-flake8', {'for': 'py'}
+		Plug 'vim-scripts/indentpython.vim'
+		" Plug 'jmcantrell/vim-virtualenv'
+		" Plug 'Yggdroot/indentLine'
+		Plug 'nvie/vim-flake8'
 
 		" Syntax
 		Plug 'vim-syntastic/syntastic'
@@ -68,7 +68,8 @@ set showcmd
 			let g:syntastic_auto_loc_list=1
 			let g:syntastic_check_on_open=1
 			let g:syntastic_check_on_wq=0
-			let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
+			let g:syntastic_tex_checkers=['chktex']
+			" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
 			let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
 
 	call plug#end()
