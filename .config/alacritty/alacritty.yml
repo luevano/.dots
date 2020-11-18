@@ -242,3 +242,4 @@ key_bindings:
   - { key: J,           mods: Control|Shift,            action: ScrollPageDown,     mode: ~Alt}
   - { key: H,           mods: Control|Shift,            action: ScrollToTop,        mode: ~Alt}
   - { key: L,           mods: Control|Shift,            action: ScrollToBottom,     mode: ~Alt}
+  - { key: N,           mods: Control|Shift,            action: SpawnNewInstance,   mode: ~Alt}
