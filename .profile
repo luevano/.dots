@@ -12,6 +12,10 @@ export BROWSER="google-chrome-stable"
 export READER="zathura"
 export FILE="ranger"
 export STATUSBAR="i3blocks"
+export MUSIC="spotify"
+export MAILMGR="thunderbird"
+export MSGCHAT="telegram-desktop"
+export SSMGR="flameshot"
 
 	## ~/ cleanup.
 export ZDOTDIR="$HOME/.config/zsh"

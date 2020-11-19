@@ -24,8 +24,11 @@ font pango:monospace 10
 	set $read --no-startup-id $READER
 	set $rstbar pkill -RTMIN+1 $STATUSBAR
 	set $music --no-startup-id spotify
+	# set $music --no-startup-id $MUSIC
 	set $msgs --no-startup-id telegram-desktop
+	# set $msgs --no-startup-id $MSGCHAT
 	set $ss --no-startup-id flameshot
+	# set $ss --no-startup-id $SSMGR
 	set $sspath "$HOME/pix/ss/"
 ## Colors from ~/.Xresources.
 	# set_from_resource $bg background
@@ -76,13 +79,13 @@ font pango:monospace 10
 	# WS5
 	assign [class="vlc"] $ws5
 	# WS6
-	# assign [class="Google-chrome"] $ws6
+	assign [class="Google-chrome"] $ws6
 	# WS7
-	# assign [class="TelegramDesktop"] $ws7
+	assign [class="TelegramDesktop"] $ws7
 	# WS8
 	# WS9
 	# WS10
-	# assign [class="Spotify"] $ws10
+	for_window [class="Spotify"] move to workspace $ws10
 ## Window properties for windows.
 	for_window [class="Yad"] floating enable
 	for_window [class="mogli"] floating enable
@@ -145,10 +148,10 @@ client.background		$c15
 ## Apps.
 	bindsym $mod+Return exec $term
 	bindsym $mod+Delete exec $term -e htop
-	bindsym $mod+Shift+w workspace $ws6; exec $ibwsr
-	bindsym $mod+Shift+f workspace $ws4; exec $term -e $fmgr
-	bindsym $mod+m workspace $ws10; exec $music
-	bindsym $mod+Shift+m workspace $ws7; exec $msgs
+	bindsym $mod+Shift+w exec $ibwsr
+	bindsym $mod+Shift+f workspace $ws4 exec $term -e $fmgr
+	bindsym $mod+m exec $music
+	bindsym $mod+Shift+m exec $msgs
 	# Screenshots.
 	bindsym Print exec $ss gui
 	bindsym $mod+Print exec $ss full -c
