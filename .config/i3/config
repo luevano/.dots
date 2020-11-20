@@ -89,6 +89,10 @@ font pango:monospace 10
 ## Window properties for windows.
 	for_window [class="Yad"] floating enable
 	for_window [class="mogli"] floating enable
+	# Steam specific.
+	for_window [class="Steam" title="Steam Guard"] floating enable
+	for_window [class="Steam" title="Steam - News"] floating enable
+	for_window [class="Steam" title="Friends List"] floating enable
 
 ##---i3 color scheme---##
 # Class					bor bgt txt ind chb
