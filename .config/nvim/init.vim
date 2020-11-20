@@ -50,6 +50,9 @@ set showcmd
 		Plug 'KeitaNakamura/tex-conceal.vim'
 			set conceallevel=2
 			let g:tex_conceal="abdgm"
+		" Markdown/pandoc
+		Plug 'vim-pandoc/vim-pandoc'
+		Plug 'vim-pandoc/vim-pandoc-syntax'
 
 		" Python
 		Plug 'tmhedberg/SimpylFold'
