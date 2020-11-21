@@ -24,12 +24,9 @@ font pango:monospace 10
 	set $edit --no-startup-id $EDITOR
 	set $read --no-startup-id $READER
 	set $rstbar pkill -RTMIN+1 $STATUSBAR
-	set $music --no-startup-id spotify
-	# set $music --no-startup-id $MUSIC
-	set $msgs --no-startup-id telegram-desktop
-	# set $msgs --no-startup-id $MSGCHAT
-	set $ss --no-startup-id flameshot
-	# set $ss --no-startup-id $SSMGR
+	set $music --no-startup-id $MUSIC
+	set $msgs --no-startup-id $MSGCHAT
+	set $ss --no-startup-id $SSMGR
 	set $sspath "$HOME/pix/ss/"
 ## Colors from ~/.Xresources.
 	# set_from_resource $bg background
