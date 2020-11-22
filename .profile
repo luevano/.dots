@@ -48,3 +48,6 @@ export IPYTHONDIR=$HOME/.config/ipython
 	## TexLive.
 export TEXMFDIST=/usr/share/texmf-dist
 export TEXMFHOME=$HOME/.local/share/texmf
+
+	## qBittorrent.
+export QT_AUTO_SCREEN_SCALE_FACTOR=0

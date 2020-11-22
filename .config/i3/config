@@ -82,6 +82,8 @@ font pango:monospace 10
 	assign [class="TelegramDesktop"] $ws7
 	# WS8
 	# WS9
+	assign [class="discord"] $ws9
+	assign [class="Steam"] $ws9
 	# WS10
 	for_window [class="Spotify"] move to workspace $ws10
 ## Window properties for windows.
