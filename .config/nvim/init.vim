@@ -62,6 +62,11 @@ set showcmd
 		" Plug 'Yggdroot/indentLine'
 		Plug 'nvie/vim-flake8'
 
+		" Java
+		Plug 'uiiaoo/java-syntax.vim'
+		" If variable highlighting should be disabled
+		" highlight link JavaIdentifier NONE 
+
 		" Syntax
 		Plug 'vim-syntastic/syntastic'
 			set statusline+=%#warningmsg#
@@ -158,6 +163,10 @@ set showcmd
 	nmap <C-j> <C-w>j
 	nmap <C-k> <C-w>k
 	nmap <C-l> <C-w>l
+	nnoremap <C-left> :vertical resize -5<cr>
+	nnoremap <C-down> :resize +5<cr>
+	nnoremap <C-up> :resize -5<cr>
+	nnoremap <C-right> :vertical resize +5<cr>
 
 	" Enable folding with the spacebar
 	nnoremap <Space> za
