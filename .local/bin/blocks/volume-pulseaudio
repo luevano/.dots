@@ -10,7 +10,7 @@ AUDIO_MED_SYMBOL=${AUDIO_MED_SYMBOL:-''}
 AUDIO_LOW_THRESH=${AUDIO_LOW_THRESH:-0}
 AUDIO_LOW_SYMBOL=${AUDIO_LOW_SYMBOL:-''}
 
-AUDIO_MUTED_SYMBOL=${AUDIO_MUTED_SYMBOL:-'  '}
+AUDIO_MUTED_SYMBOL=${AUDIO_MUTED_SYMBOL:-''}
 
 AUDIO_DELTA=${AUDIO_DELTA:-5}
 
@@ -141,7 +141,8 @@ sed 's/.*= "\(.*\)".*/\1/')
 	elif [[ $USE_DESCRIPTION == 1 ]] ; then
 		DESCRIPTION=$(pacmd list-sinks |\
 awk '/^\s*\*/{f=1}/^\s*index:/{f=0}f' |\
-grep "device.description" |\
+# grep "device.description" |\
+grep "alsa.card_name" |\
 head -n1 |\
 sed 's/.*= "\(.*\)".*/\1/')
 		NAME=${DESCRIPTION:-$NAME}
@@ -162,7 +163,10 @@ sed 's/.*= "\(.*\)".*/\1/')
 	else
 		print_format "$LONG_FORMAT"
 		print_format "$SHORT_FORMAT"
-		echo "$COLOR"
+		# I added this only to print "custom color" when muted.
+		if [[ $MUTED =~ "yes" ]] ; then
+			echo "$COLOR"
+		fi
 	fi
 }
 
