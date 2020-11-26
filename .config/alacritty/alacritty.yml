@@ -61,11 +61,11 @@ schemes:
     primary:
       background: '0x002b36' # base03
       foreground: '0x839496' # base0
-  
+
     cursor:
       text:   '0x002b36' # base03
       cursor: '0x839496' # base0
-  
+
     normal:
       black:   '0x073642' # base02
       red:     '0xdc322f' # red
@@ -75,7 +75,7 @@ schemes:
       magenta: '0xd33682' # magenta
       cyan:    '0x2aa198' # cyan
       white:   '0xeee8d5' # base2
-  
+
     bright:
       black:   '0x002b36' # base03
       red:     '0xcb4b16' # orange
@@ -90,7 +90,7 @@ schemes:
     primary:
       background: '#282a36'
       foreground: '#f8f8f2'
-  
+
     normal:
       black:   '#000000'
       red:     '#ff5555'
@@ -100,7 +100,7 @@ schemes:
       magenta: '#ff79c6'
       cyan:    '#8be9fd'
       white:   '#bfbfbf'
-  
+
     bright:
       black:   '#575b70'
       red:     '#ff6e67'
@@ -226,20 +226,20 @@ mouse:
 #    - AppKeypad
 #    - Alt
 key_bindings:
-  - { key: V,           mods: Control|Shift,    action: Paste}
-  - { key: C,           mods: Control|Shift,    action: Copy}
-  - { key: Insert,      mods: Shift,            action: PasteSelection}
-  - { key: Key0,        mods: Control,          action: ResetFontSize}
-  - { key: Equals,      mods: Control,          action: IncreaseFontSize}
-  - { key: Add,         mods: Control,          action: IncreaseFontSize}
-  - { key: Subtract,    mods: Control,          action: DecreaseFontSize}
-  - { key: Minus,       mods: Control,          action: DecreaseFontSize}
-  - { key: Paste,                               action: Paste}
-  - { key: Copy,                                action: Copy}
-  - { key: L,           mods: Control,          action: ClearLogNotice}
-  - { key: L,           mods: Control,          chars: "\x0c"}
-  - { key: K,           mods: Control|Shift,            action: ScrollPageUp,       mode: ~Alt}
-  - { key: J,           mods: Control|Shift,            action: ScrollPageDown,     mode: ~Alt}
-  - { key: H,           mods: Control|Shift,            action: ScrollToTop,        mode: ~Alt}
-  - { key: L,           mods: Control|Shift,            action: ScrollToBottom,     mode: ~Alt}
-  - { key: N,           mods: Control|Shift,            action: SpawnNewInstance,   mode: ~Alt}
+  - { key: V,                   mods: Control|Shift,    action: Paste}
+  - { key: C,                   mods: Control|Shift,    action: Copy}
+  - { key: Insert,              mods: Shift,            action: PasteSelection}
+  - { key: Key0,                mods: Control,          action: ResetFontSize}
+  - { key: Equals,              mods: Control,          action: IncreaseFontSize}
+  - { key: NumpadAdd,           mods: Control,          action: IncreaseFontSize}
+  - { key: NumpadSubtract,      mods: Control,          action: DecreaseFontSize}
+  - { key: Minus,               mods: Control,          action: DecreaseFontSize}
+  - { key: Paste,                                       action: Paste}
+  - { key: Copy,                                        action: Copy}
+  - { key: L,                   mods: Control,          action: ClearLogNotice}
+  - { key: L,                   mods: Control,                                                  chars: "\x0c"}
+  - { key: K,                   mods: Control|Shift,    action: ScrollPageUp,       mode: ~Alt}
+  - { key: J,                   mods: Control|Shift,    action: ScrollPageDown,     mode: ~Alt}
+  - { key: H,                   mods: Control|Shift,    action: ScrollToTop,        mode: ~Alt}
+  - { key: L,                   mods: Control|Shift,    action: ScrollToBottom,     mode: ~Alt}
+  - { key: N,                   mods: Control|Shift,    action: SpawnNewInstance,   mode: ~Alt}
