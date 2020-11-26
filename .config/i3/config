@@ -93,6 +93,7 @@ font pango:monospace 10
 	for_window [class="mogli"] floating enable
 	# for_window [title="Picture in picture"] resize set 640 360 px, move position 1270 30, move to output $mon1
 	for_window [class="Google-chrome" instance="crx_kmfikkopdhmbdbkndkamabamlkkgkpod"] floating enable, resize set 640 360, move position 1270 30, move to output $mon1
+	# for_window [class="discord" window_role="browser-window"] floating enable
 	# Steam specific.
 	for_window [class="Steam" title="Steam Guard"] floating enable
 	for_window [class="Steam" title="Steam - News"] floating enable
