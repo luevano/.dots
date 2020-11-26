@@ -5,8 +5,10 @@
 # Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
-# Colorize commands when possible.
+# Better ls with exa.
 alias ls="exa -aH --color=automatic --group-directories-first --git"
+alias ll="ls -l"
+alias lt="ls -TL 6"
 
 # TexLive Manager fix as described in https://wiki.archlinux.org/index.php/TeX_Live
 alias tlmgr='$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'
