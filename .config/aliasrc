@@ -14,5 +14,7 @@ alias lt="ls -TL 6"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 
+alias dots="/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME"
+
 # TexLive Manager fix as described in https://wiki.archlinux.org/index.php/TeX_Live
 alias tlmgr="$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode"

@@ -15,72 +15,72 @@ set showcmd
 " unlet autoload_plug_path
 
 ""---Loads plugins---""
-	call plug#begin('~/.config/nvim/plugged')
-		" Color schemes
-		Plug 'altercation/vim-colors-solarized'
-		Plug 'dracula/vim'
-
-		" Other
-		Plug 'mboughaba/i3config.vim'
-		Plug 'junegunn/goyo.vim'
-		Plug 'preservim/nerdtree'
-			let g:NERDTreeShowHidden=1
-			autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-		"Airline
-		Plug 'vim-airline/vim-airline'
-			let g:airline_powerline_fonts=1
-		Plug 'vim-airline/vim-airline-themes'
-			let g:airline_theme='dracula'
-
-		" Git
-		Plug 'Xuyuanp/nerdtree-git-plugin'
-		Plug 'mhinz/vim-signify'
-			set updatetime=100
-
-		"Auto completion
-		Plug 'Valloric/YouCompleteMe'
-			let g:ycm_autoclose_preview_window_after_completion=1
-
-		" TeX
-		Plug 'lervag/vimtex'
-			let g:tex_flavor='latex'
-			let g:vimtex_view_method=$READER
-			let g:vimtex_quickfix_mode=0
-		Plug 'KeitaNakamura/tex-conceal.vim'
-			set conceallevel=2
-			let g:tex_conceal="abdgm"
-		" Markdown/pandoc
-		Plug 'vim-pandoc/vim-pandoc'
-		Plug 'vim-pandoc/vim-pandoc-syntax'
-
-		" Python
-		Plug 'tmhedberg/SimpylFold'
-			let g:SympylFold_docstring_preview=1
-		Plug 'vim-scripts/indentpython.vim'
-		" Plug 'jmcantrell/vim-virtualenv'
-		" Plug 'Yggdroot/indentLine'
-		Plug 'nvie/vim-flake8'
-
-		" Java
-		Plug 'uiiaoo/java-syntax.vim'
-		" If variable highlighting should be disabled
-		" highlight link JavaIdentifier NONE 
-
-		" Syntax
-		Plug 'vim-syntastic/syntastic'
-			set statusline+=%#warningmsg#
-			set statusline+=%{SyntasticStatuslineFlag()}
-			set statusline+=%*
-			let g:syntastic_always_populate_loc_list=1
-			let g:syntastic_auto_loc_list=1
-			let g:syntastic_check_on_open=1
-			let g:syntastic_check_on_wq=0
-			let g:syntastic_tex_checkers=['chktex']
-			" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
-			let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
-
-	call plug#end()
+" 	call plug#begin('~/.config/nvim/plugged')
+" 		" Color schemes
+" 		Plug 'altercation/vim-colors-solarized'
+" 		Plug 'dracula/vim'
+" 
+" 		" Other
+" 		Plug 'mboughaba/i3config.vim'
+" 		Plug 'junegunn/goyo.vim'
+" 		Plug 'preservim/nerdtree'
+" 			let g:NERDTreeShowHidden=1
+" 			autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" 
+" 		"Airline
+" 		Plug 'vim-airline/vim-airline'
+" 			let g:airline_powerline_fonts=1
+" 		Plug 'vim-airline/vim-airline-themes'
+" 			let g:airline_theme='dracula'
+" 
+" 		" Git
+" 		Plug 'Xuyuanp/nerdtree-git-plugin'
+" 		Plug 'mhinz/vim-signify'
+" 			set updatetime=100
+" 
+" 		"Auto completion
+" 		Plug 'Valloric/YouCompleteMe'
+" 			let g:ycm_autoclose_preview_window_after_completion=1
+" 
+" 		" TeX
+" 		Plug 'lervag/vimtex'
+" 			let g:tex_flavor='latex'
+" 			let g:vimtex_view_method=$READER
+" 			let g:vimtex_quickfix_mode=0
+" 		Plug 'KeitaNakamura/tex-conceal.vim'
+" 			set conceallevel=2
+" 			let g:tex_conceal="abdgm"
+" 		" Markdown/pandoc
+" 		Plug 'vim-pandoc/vim-pandoc'
+" 		Plug 'vim-pandoc/vim-pandoc-syntax'
+" 
+" 		" Python
+" 		Plug 'tmhedberg/SimpylFold'
+" 			let g:SympylFold_docstring_preview=1
+" 		Plug 'vim-scripts/indentpython.vim'
+" 		" Plug 'jmcantrell/vim-virtualenv'
+" 		" Plug 'Yggdroot/indentLine'
+" 		Plug 'nvie/vim-flake8'
+" 
+" 		" Java
+" 		Plug 'uiiaoo/java-syntax.vim'
+" 		" If variable highlighting should be disabled
+" 		" highlight link JavaIdentifier NONE 
+" 
+" 		" Syntax
+" 		Plug 'vim-syntastic/syntastic'
+" 			set statusline+=%#warningmsg#
+" 			set statusline+=%{SyntasticStatuslineFlag()}
+" 			set statusline+=%*
+" 			let g:syntastic_always_populate_loc_list=1
+" 			let g:syntastic_auto_loc_list=1
+" 			let g:syntastic_check_on_open=1
+" 			let g:syntastic_check_on_wq=0
+" 			let g:syntastic_tex_checkers=['chktex']
+" 			" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
+" 			let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
+" 
+" 	call plug#end()
 	"" Commands for plug.
 	" PlugInstall [name ...] [#threads]		Install plugins
 	" PlugUpdate [name ...] [#threads]		Install or update plugins
@@ -93,7 +93,7 @@ set showcmd
 ""---Basic configuration---""
 	syntax enable
 	set background=dark
-	colorscheme dracula
+	" colorscheme dracula
 	" Just so alacritty can use transparency.
 	hi Normal ctermbg=NONE
 	set encoding=utf-8

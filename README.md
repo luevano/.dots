@@ -1,2 +1,0 @@
-# .dots
-My personal dotfiles.
