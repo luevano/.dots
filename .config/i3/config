@@ -115,7 +115,7 @@ client.background		$c15
 		output $mon1
 		tray_output $mon1
 		position top
-		# status_command $STATUSBAR
+		status_command $STATUSBAR
 		colors{
 			background	$c8
 			statusline	$c12
@@ -134,7 +134,7 @@ client.background		$c15
 		output $mon2
 		tray_output none
 		position top
-		# status_command $STATUSBAR
+		status_command $STATUSBAR
 		colors{
 			background	$c8
 			statusline	$c12

@@ -13,4 +13,4 @@ flameshot &		# Screenshots.
 pasystray &		# Pulse Audio tray icon.
 
 # At the end, start the WM.
-exec i3
+# exec i3
