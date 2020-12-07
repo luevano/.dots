@@ -78,14 +78,14 @@ font pango:monospace 10
 	assign [class="vlc"] $ws5
 	# WS6
 		# The title regex is a negative lookahead.
-	assign [class="Google-chrome" title="^(?!Save File).*$"] $ws6
+	assign [class="Google-chrome" title="^(?!Save File).*$" title="^(?!GtkFileChooserDialog).*$"] $ws6
 	# WS7
 	assign [class="TelegramDesktop"] $ws7
 	# WS8
 	# WS9
 	assign [class="discord"] $ws9
-	assign [class="Steam"] $ws9
-	assign [title="steam"] $ws9
+	# assign [class="Discord" window_role="GtkFileChooserDialog"] $ws9
+	assign [class="Steam" title="steam"] $ws9
 	# WS10
 	for_window [class="Spotify"] move to workspace $ws10
 ## Window properties for windows.
@@ -93,11 +93,12 @@ font pango:monospace 10
 	for_window [class="mogli"] floating enable
 	# for_window [title="Picture in picture"] resize set 640 360 px, move position 1270 30, move to output $mon1
 	for_window [class="Google-chrome" instance="crx_kmfikkopdhmbdbkndkamabamlkkgkpod"] floating enable, resize set 640 360, move position 1270 30, move to output $mon1
-	# for_window [class="discord" window_role="browser-window"] floating enable
+
 	# Steam specific.
 	for_window [class="Steam" title="Steam Guard"] floating enable
 	for_window [class="Steam" title="Steam - News"] floating enable
 	for_window [class="Steam" title="Friends List"] floating enable
+	for_window [title="/^Steam$/"] move to workspace $ws9
 
 ##---i3 color scheme---##
 # Class					bor bgt txt ind chb

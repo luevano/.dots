@@ -38,7 +38,7 @@ set showcmd
 		Plug 'mhinz/vim-signify'
 			set updatetime=100
 
-		" Auto completion
+		"Auto completion
 		Plug 'Valloric/YouCompleteMe'
 			let g:ycm_autoclose_preview_window_after_completion=1
 
@@ -158,6 +158,11 @@ set showcmd
 	" Toggle relative line number
 	nmap <F2> :set number invrelativenumber<CR>
 
+	" Buffers
+	nnoremap gb :ls<CR>:buffer<Space>
+	nmap <Leader>a :badd<Space>
+	nmap <Leader>l :ls<CR>
+
 	" Split navigation
 	nmap <C-h> <C-w>h
 	nmap <C-j> <C-w>j
@@ -168,6 +173,10 @@ set showcmd
 	nnoremap <C-up> :resize -5<cr>
 	nnoremap <C-right> :vertical resize +5<cr>
 
+	" Tab manipulation
+	nmap <Leader>t :tabe<CR>
+	nmap <Leader>y :tabclose<CR>
+
 	" Enable folding with the spacebar
 	nnoremap <Space> za
 
@@ -177,10 +186,13 @@ set showcmd
 	" List chars
 	nmap <Leader>c :call ToggleListChars()<CR>
 
-	" Buffers.
-	nnoremap gb :ls<CR>:buffer<Space>
-	nmap <Leader>a :badd<Space>
-	nmap <Leader>l :ls<CR>
+	" Custom auto completion
+	" inoremap {<CR> {<CR>}<ESC>kA<CR>
+	" inoremap { {}<ESC>i
+	" inoremap ( ()<ESC>i
+	" inoremap [ []<ESC>i
+	" inoremap ' ''<ESC>i
+	" inoremap " ""<ESC>i
 
 ""---Plugin keybindings---""
 	" Toggle NERDTree

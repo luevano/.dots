@@ -3,7 +3,7 @@
 # Sync files between local pc and remote pk server.
 
 echo "rsync: pushing (U) local (lz) to remote (pk)."
-rsync -rtuvP --exclude-from=$HOME/code/java/pk/.ignore $HOME/code/java/pk/ pk:/home/dla/pk
+rsync -rtuvP --exclude-from=$HOME/code/java/pkitp/.rsyncignore $HOME/code/java/pkitp/ pk:/home/dla/pkitp
 
 echo "rsync: pulling (U) remote (pk) to local (lz)."
-rsync -rtuvP --exclude-from=$HOME/code/java/pk/.ignore pk:/home/dla/pk/ $HOME/code/java/pk
+rsync -rtuvP --exclude-from=$HOME/code/java/pkitp/.rsyncignore pk:/home/dla/pkitp/ $HOME/code/java/pkitp
