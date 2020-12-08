@@ -8,7 +8,7 @@ PS1="%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue
 [[ -f $HOME/.config/dircolors ]] && eval "$(dircolors $HOME/.config/dircolors)"
 
 # Load aliases if existent.
-[[ -f $HOME/.config/aliasrc ]] && . ~/.config/aliasrc
+[[ -f $HOME/.config/shell/aliasrc ]] && . ~/.config/shell/aliasrc
 
 # History cache.
 HISTFILE=$HOME/.cache/zsh/history
