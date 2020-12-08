@@ -8,11 +8,11 @@ separator=false
 separator_block_width=5
 markup=pango
 
-[player]
-interval=5
-label=
-instance=spotify
-signal=1
+# [player]
+# interval=5
+# label=
+# instance=spotify
+# signal=1
 
 [gpu]
 interval=5
