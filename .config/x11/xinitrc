@@ -4,4 +4,8 @@
 # but since display managers use ~/.xprofile instead,
 # .xprofile is sourced to be compatible with both.
 
-[ -f $HOME/.xprofile ] && . $HOME/.xprofile
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+else
+	. "$HOME/.xprofile"
+fi

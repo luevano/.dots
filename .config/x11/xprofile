@@ -3,12 +3,15 @@
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.
 
-nm-applet & 	# Network Manager.
-picom &			# Transparency and stuff.
-dunst & 		# Notifications.
-udiskie & 		# Drive mounting.
-flameshot &		# Screenshots.
-pasystray &		# Pulse Audio tray icon.
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &
+nm-applet &
+picom &
+dunst &
+udiskie &
+flameshot &
+# When not using a DM use this command.
+# start-pulseaudio-x11 &
+pasystray &
 
 # At the end, start the WM.
 # exec i3
