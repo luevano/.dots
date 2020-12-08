@@ -53,6 +53,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 ##--Start X automatically--##
 
+# Following: https://wiki.archlinux.org/index.php/Xinit#Autostart_X_at_login
 # More on autologin and autostarting x without a DM:
 # https://forums.bunsenlabs.org/viewtopic.php?id=5544
 # Also LS's config could be important here:
