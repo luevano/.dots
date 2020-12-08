@@ -1,1 +1,1 @@
-.profile
+/home/lz/.config/shell/profile
