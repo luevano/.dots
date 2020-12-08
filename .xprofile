@@ -1,14 +1,1 @@
-#!/bin/sh
-
-# This is run when a display manager logs in.
-# Used as source for ~/.xinitrc.
-
-nm-applet & 	# Network Manager.
-picom &			# Transparency and stuff.
-dunst & 		# Notifications.
-udiskie & 		# Drive mounting.
-flameshot &		# Screenshots.
-pasystray &		# Pulse Audio tray icon.
-
-# At the end, start the WM.
-# exec i3
+/home/lz/.config/x11/xprofile
