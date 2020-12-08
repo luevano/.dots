@@ -9,9 +9,9 @@ picom &
 dunst &
 udiskie &
 flameshot &
-# When not using a DM use this command.
-# start-pulseaudio-x11 &
+# Not really needed when using startx (in general the config in ~/.profile)
+# pulseaudio --start &
 pasystray &
 
 # At the end, start the WM.
-# exec i3
+exec i3
