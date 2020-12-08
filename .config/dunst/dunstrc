@@ -1,5 +1,3 @@
-#
-# ~/.config/dunst/dunstrc
 # vim: ft=cfg
 [global]
     monitor = 0
@@ -73,7 +71,7 @@
 [shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
-    history = ctrl+grave
+    # history = ctrl+grave
     context = ctrl+shift+period
 
 [urgency_low]
