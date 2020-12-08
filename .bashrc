@@ -1,8 +1,6 @@
 #!/bin/sh
-# ~/.bashrc
-#
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+[ $- != *i* ] && return
 
-PS1='[\u@\h \w]\$ '
+PS1="[\u@\h \w]\$ "

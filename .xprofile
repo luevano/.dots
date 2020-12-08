@@ -1,6 +1,4 @@
 #!/bin/sh
-# ~/.xprofile
-#
 
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.

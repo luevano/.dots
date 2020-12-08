@@ -1,6 +1,5 @@
 #!/bin/sh
-# ~/.profile
-#
+
 ##--Environment variables--##
 	## Modified env vars.
 export PATH="$PATH:$(du -L "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
@@ -8,7 +7,7 @@ export PATH="$PATH:$(du -L "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/
 	## Default programs.
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
+export BROWSER="firefox"
 export READER="zathura"
 export FILE="ranger"
 export STATUSBAR="i3blocks"

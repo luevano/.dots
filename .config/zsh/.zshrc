@@ -1,6 +1,4 @@
 #!/bin/zsh
-# $ZDOTDIR/.zshrc
-#
 
 # PS1 colors and style.
 autoload -U colors && colors
