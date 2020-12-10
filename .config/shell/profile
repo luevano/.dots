@@ -23,7 +23,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 		# Ruby/gem.
-export GEM_HOME="$XDG_CONFIG_HOME/gem"
+export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 	export PATH="$PATH:$GEM_HOME/bin"
 		# Node.js.
