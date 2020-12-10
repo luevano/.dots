@@ -39,8 +39,8 @@ set showcmd
 			set updatetime=100
 
 		"Auto completion
-		" Plug 'Valloric/YouCompleteMe'
-		" 	let g:ycm_autoclose_preview_window_after_completion=1
+		Plug 'Valloric/YouCompleteMe'
+			let g:ycm_autoclose_preview_window_after_completion=1
 
 		" TeX
 		Plug 'lervag/vimtex'
@@ -69,17 +69,17 @@ set showcmd
 		" highlight link JavaIdentifier NONE
 
 		" Syntax
-		" Plug 'vim-syntastic/syntastic'
-		" 	set statusline+=%#warningmsg#
-		" 	set statusline+=%{SyntasticStatuslineFlag()}
-		" 	set statusline+=%*
-		" 	let g:syntastic_always_populate_loc_list=1
-		" 	let g:syntastic_auto_loc_list=1
-		" 	let g:syntastic_check_on_open=1
-		" 	let g:syntastic_check_on_wq=0
-		" 	let g:syntastic_tex_checkers=['chktex']
-		" 	" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
-		" 	let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
+		Plug 'vim-syntastic/syntastic'
+			set statusline+=%#warningmsg#
+			set statusline+=%{SyntasticStatuslineFlag()}
+			set statusline+=%*
+			let g:syntastic_always_populate_loc_list=1
+			let g:syntastic_auto_loc_list=1
+			let g:syntastic_check_on_open=1
+			let g:syntastic_check_on_wq=0
+			let g:syntastic_tex_checkers=['chktex']
+			" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
+			let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
 
 	call plug#end()
 	"" Commands for plug.
