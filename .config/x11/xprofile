@@ -3,6 +3,7 @@
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.
 
+numlockx on &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &
 nm-applet &
 picom &
