@@ -26,6 +26,10 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 	export PATH="$PATH:$GEM_HOME/bin"
+		# Older way of handling ruby/gem.
+# if command -v ruby >/dev/null 2>&1; then
+# 	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+# fi
 		# Node.js.
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
@@ -36,15 +40,19 @@ export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 		# GTK.
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-		# CUDA.
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+		# Jupyter lab.
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTERLAB_DIR="$XDG_DATA_HOME/jupyter/lab"
 		# Other.
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export LESSHISTFILE="-"
 export HISTFILE="$XDG_DATA_HOME/history"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 # export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 # export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 # export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
@@ -59,10 +67,40 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 # export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
 # export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
 
+	## Less.
+	# There are definitions for less to not make history file above on ~/ cleanup.
+export LESS=-R
+	# Taken from LS's dots. Not sure if should keep the '\e', since without it
+	# less freaks out. Also, more info on the following links:
+	# https://unix.stackexchange.com/questions/108699/documentation-on-less-termcap-variables
+	# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+	# At last, I changed the codes to actually do what they're supposed to do.
+export LESS_TERMCAP_mb="$(printf '%b' '\e[5;31m')"
+export LESS_TERMCAP_md="$(printf '%b' '\e[1;36m')"
+export LESS_TERMCAP_me="$(printf '%b' '\e[0m')"
+export LESS_TERMCAP_so="$(printf '%b' '\e[1;45;33m')"
+export LESS_TERMCAP_se="$(printf '%b' '\e[0m')"
+export LESS_TERMCAP_us="$(printf '%b' '\e[4;32m')"
+export LESS_TERMCAP_ue="$(printf '%b' '\e[0m')"
+	# What these termcap variables mean:
+		# termcap terminfo
+		# ks      smkx      make the keypad send commands
+		# ke      rmkx      make the keypad send digits
+		# vb      flash     emit visual bell
+		# mb      blink     start blink
+		# md      bold      start bold
+		# me      sgr0      turn off bold, blink and underline
+		# so      smso      start standout (reverse video)
+		# se      rmso      stop standout
+		# us      smul      start underline
+		# ue      rmul      stop underline
+export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+
 	## Ranger.
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 	## CUDA.
+	# There is a definition for the cuda cache path above on ~/ cleanup.
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
 
 	## Tensorflow.
@@ -72,27 +110,15 @@ export TF_CPP_MIN_LOG_LEVEL="0"
 	# 2 = INFO and WARNING messages are not printed
 	# 3 = INFO, WARNING, and ERROR messages are not printed
 
-	## Ruby
-if command -v ruby >/dev/null 2>&1; then
-	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-fi
-
-	## Jupyter lab.
-export JUPYTER_CONFIG_DIR=$HOME/.config/jupyter
-export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
-
-	## iPython.
-export IPYTHONDIR=$HOME/.config/ipython
-
 	## TexLive.
+	# There is a definition for the texmf home above in ~/ cleanup.
 export TEXMFDIST=/usr/share/texmf-dist
-export TEXMFHOME=$HOME/.local/share/texmf
 
 	## qBittorrent.
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
-##--Start X automatically--##
 
+##--Start X automatically--##
 # Following: https://wiki.archlinux.org/index.php/Xinit#Autostart_X_at_login
 # More on autologin and autostarting x without a DM:
 # https://forums.bunsenlabs.org/viewtopic.php?id=5544
