@@ -61,7 +61,8 @@ set showcmd
 		Plug 'vim-scripts/indentpython.vim'
 		" Plug 'jmcantrell/vim-virtualenv'
 		" Plug 'Yggdroot/indentLine'
-		Plug 'nvie/vim-flake8'
+		" No longer needed as synstastic includes flake8 linter.
+		" Plug 'nvie/vim-flake8'
 
 		" Java
 		Plug 'uiiaoo/java-syntax.vim'
@@ -99,6 +100,7 @@ set showcmd
 	hi Normal ctermbg=NONE
 	set encoding=utf-8
 	set number relativenumber
+	set cursorline
 	set clipboard+=unnamedplus
 
 	" Custom colors/highlights

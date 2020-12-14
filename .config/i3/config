@@ -12,20 +12,22 @@ font pango:monospace 10
 	set $gi "5"
 	set $go "10"
 ## i3config variables.
+	# Totally needed.
 	set $mon2 "HDMI-0"
 	set $mon1 "DP-0"
 	set $dmenu --no-startup-id i3-dmenu-desktop
 	set $term --no-startup-id $TERMINAL
-	# Really no need in making this variable...
 	set $fmgr $FILE
 	set $ibwsr --no-startup-id $BROWSER
 	set $edit --no-startup-id $EDITOR
 	set $read --no-startup-id $READER
 	set $rstbar pkill -RTMIN+1 $STATUSBAR
-	set $music --no-startup-id $MUSIC
-	set $msgs --no-startup-id $MSGCHAT
+	# Other.
 	set $ss --no-startup-id $SSMGR
 	set $sspath "$HOME/pix/ss/"
+	set $music --no-startup-id $MUSIC
+	set $msgs --no-startup-id $MSGCHAT
+	set $mail --no-startup-id $MAILMGR
 ## Colors from ~/.Xresources.
 	# set_from_resource $bg background
 	# set_from_resource $fg foreground
@@ -52,7 +54,7 @@ font pango:monospace 10
 	set $ws4 "4: Files"
 	set $ws5 "5: Multimedia"
 	set $ws6 "6: Browser"
-	set $ws7 "7: Chat"
+	set $ws7 "7:  Messaging"
 	set $ws8 "8: Reader"
 	set $ws9 "9: Gaming"
 	set $ws10 "10: Music"
@@ -75,28 +77,24 @@ font pango:monospace 10
 	# WS5
 	assign [class="vlc"] $ws5
 	# WS6
-		# The title regex is a negative lookahead.
-	assign [class="Google-chrome" title="^(?!Save File).*$" title="^(?!GtkFileChooserDialog).*$"] $ws6
+		# For a negative regex lookup: "^(?!Save As).*$", for example.
+	assign [class="firefox"] $ws6
 	# WS7
-	assign [class="TelegramDesktop"] $ws7
+	assign [class="Thunderbird"] $ws7
 	# WS8
 	# WS9
 	assign [class="discord"] $ws9
-	# assign [class="Discord" window_role="GtkFileChooserDialog"] $ws9
 	assign [class="Steam" title="steam"] $ws9
+		for_window [title="/^Steam$/"] move to workspace $ws9
 	# WS10
-	for_window [class="Spotify"] move to workspace $ws10
-## Window properties for windows.
+## Window properties and or behaviour.
 	for_window [class="Yad"] floating enable
 	for_window [class="mogli"] floating enable
-	# for_window [title="Picture in picture"] resize set 640 360 px, move position 1270 30, move to output $mon1
-	for_window [class="Google-chrome" instance="crx_kmfikkopdhmbdbkndkamabamlkkgkpod"] floating enable, resize set 640 360, move position 1270 30, move to output $mon1
 
 	# Steam specific.
 	for_window [class="Steam" title="Steam Guard"] floating enable
 	for_window [class="Steam" title="Steam - News"] floating enable
 	for_window [class="Steam" title="Friends List"] floating enable
-	for_window [title="/^Steam$/"] move to workspace $ws9
 
 ##---i3 color scheme---##
 # Class					bor bgt txt ind chb
@@ -158,8 +156,9 @@ client.background		$c15
 	bindsym $mod+Delete exec $term -e htop
 	bindsym $mod+Shift+w exec $ibwsr
 	bindsym $mod+Shift+f workspace $ws4 exec $term -e $fmgr
-	bindsym $mod+m exec $music
-	bindsym $mod+Shift+m exec $msgs
+	# bindsym $mod+m exec $music
+	# bindsym $mod+Shift+m exec $msgs
+	bindsym $mod+Shift+m exec $mail
 	# Screenshots.
 	bindsym Print exec $ss gui
 	bindsym $mod+Print exec $ss full -c

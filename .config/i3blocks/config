@@ -59,3 +59,11 @@ DATEFMT=+%d/%b/%y %H:%M
 # SHORTFMT=+%H:%M:%S
 HEIGHT=180
 WIDTH=220
+
+[dunst]
+interval=once
+format=json
+markup=pango
+#min_width=50
+#align=center
+#DUNST_MUTE=off
