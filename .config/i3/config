@@ -244,6 +244,7 @@ client.background		$c15
 		bindsym l resize grow width 1 px or 1 ppt
 		bindsym Shift+l resize grow width 5 px or 5 ppt
 		bindsym Ctrl+l resize grow width 10 px or 10 ppt
+
 			# Gaps resizing.
 		bindsym plus gaps outer current plus 1
 		bindsym Shift+plus gaps inner current plus 1
@@ -251,6 +252,7 @@ client.background		$c15
 		bindsym Shift+minus gaps inner current minus 1
 		bindsym g gaps inner all set $gi, gaps outer all set $go
 		bindsym Shift+g gaps inner all set 0, gaps outer all set 0
+
 			# Return to default mode keybindings.
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
