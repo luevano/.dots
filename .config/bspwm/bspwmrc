@@ -5,14 +5,14 @@
 # and the kill doesn't ruin it.
 pgrep -x sxhkd > /dev/null || setsid sxhkd &
 
-# This starts or restarts statusbar. Be careful
+# This starts or restarts panel. Be careful
 # with pkill, if neither of these two programs have
 # a 'setsid' prepended to their command, sxhdk wil crash.
-if [ $(pgrep -x statusbar | wc -l) = 1 ];then
-	pkill -x statusbar
-	statusbar &
+if [ $(pgrep -x panel | wc -l) = 1 ];then
+	pkill -x panel
+	panel &
 else
-	statusbar &
+	panel &
 fi
 
 # Multihead stuff.

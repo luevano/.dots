@@ -1,5 +1,5 @@
 #!/bin/sh
-# General script that manages the statusbar/panel.
+# General script that manages the panel/panel.
 
 STATUSBAR_FIFO=/tmp/panel-fifo
 STATUSBAR_HEIGHT=20
@@ -8,12 +8,12 @@ STATUSBAR_EMOJI_FONT0="Noto Color Emoji"
 STATUSBAR_EMOJI_FONT1="Font Awesome 5 Free"
 STATUSBAR_EMOJI_FONT2="Font Awesome 5 Brands"
 STATUSBAR_EMOJI_FONT3="Font Awesome 5 Free Solid"
-STATUSBAR_WM_NAME=bspwm_statusbar
-. statusbar_colors
+STATUSBAR_WM_NAME=bspwm_panel
+. panel_colors
 
 
 if xdo id -a "$STATUSBAR_WM_NAME" > /dev/null ; then
-	printf "%s\n" "The status bar is already running. Try pkill -x statusbar." >&2
+	printf "%s\n" "The status bar is already running. Try pkill -x panel." >&2
 	exit 1
 fi
 
@@ -25,7 +25,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 mkfifo "$STATUSBAR_FIFO"
 
 
-# Here is where all the 'plugins' or 'blocks' for the statusbar
+# Here is where all the 'plugins' or 'blocks' for the panel
 # are run. They're piped into the FIFO for later reading.
 # In general you want them to print a letter at the beginning and then
 # the actual stuff to show on scren, so you can distinguish between them on the actual bars.
@@ -37,7 +37,7 @@ bspc subscribe report > "$STATUSBAR_FIFO" &
 # Here you can start N amount of bars and each one would be
 # different if required. Piping into 'sh' is required for interaction
 # with the bar.
-statusbar_main < "$STATUSBAR_FIFO" | lemonbar -a 32 -u 2 -n "$STATUSBAR_WM_NAME" -g x$STATUSBAR_HEIGHT -f "$STATUSBAR_FONT" -f "$STATUSBAR_EMOJI_FONT0" -f "$STATUSBAR_EMOJI_FONT1" -f "$STATUSBAR_EMOJI_FONT2" -f "$STATUSBAR_EMOJI_FONT3" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+panel_main < "$STATUSBAR_FIFO" | lemonbar -a 32 -u 2 -n "$STATUSBAR_WM_NAME" -g x$STATUSBAR_HEIGHT -f "$STATUSBAR_FONT" -f "$STATUSBAR_EMOJI_FONT0" -f "$STATUSBAR_EMOJI_FONT1" -f "$STATUSBAR_EMOJI_FONT2" -f "$STATUSBAR_EMOJI_FONT3" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
 
 
 # This only really works for one monitor.
