@@ -15,6 +15,7 @@ export STATUSBAR="i3blocks"
 export MAILMGR="thunderbird"
 # export MSGCHAT="telegram-desktop"
 export SSMGR="flameshot"
+	export SSPATH="$HOME/pix/ss/"
 
 	## ~/ cleanup.
 		# XDG base directory specification found in:

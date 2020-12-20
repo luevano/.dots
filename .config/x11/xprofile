@@ -15,4 +15,4 @@ flameshot &
 pasystray &
 
 # At the end, start the WM.
-exec i3
+exec bspwm

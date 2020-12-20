@@ -1,13 +1,23 @@
 #!/bin/sh
 
-# Check if sxhkd is installed, I guess,
-# because bspwm doesn't have keybindings by default.
+# Checks if X program is already running, if not, run it.
 pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x statusbar > /dev/null || statusbar &
 
 # Multihead.
-if [ $(hostname) == "arch" ]; then
-	bspc monitor DP-0 -d I II III IV V
-	bspc monitor HDMI-0 -d VI VII VIII IX X
+if [ $(uname -n) = "arch" ]; then
+	MAINMON="DP-0" 
+	SECMON="HDMI-0"
+	
+	bspc monitor $MAINMON -d 1 2 3 4 5
+	bspc monitor $SECMON -d 6 7 8 9 10
+
+	if [ $(pgrep -f bspwm_enforce_monitor_position) < 2]; then
+		bspwm_enforce_monitor_position $MAINMON '^1' &
+	else
+		killall bspwm_enforce_monitor_position
+		bspwm_enforce_monitor_position $MAINMON '^1' &
+	fi
 else
 	bspc monitor -d I II III IV V VI VII VIII IX X
 fi

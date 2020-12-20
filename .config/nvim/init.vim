@@ -19,8 +19,11 @@ set showcmd
 		" Color schemes
 		" Plug 'altercation/vim-colors-solarized'
 		Plug 'dracula/vim'
+		Plug 'chrisbra/Colorizer'
+			let g:colorizer_colornames = 0
 
 		" Other
+		Plug 'baskerville/vim-sxhkdrc'
 		Plug 'mboughaba/i3config.vim'
 		Plug 'junegunn/goyo.vim'
 		Plug 'preservim/nerdtree'
@@ -98,6 +101,7 @@ set showcmd
 	colorscheme dracula
 	" Just so alacritty can use transparency.
 	hi Normal ctermbg=NONE
+	set title
 	set encoding=utf-8
 	set number relativenumber
 	set cursorline
