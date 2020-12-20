@@ -4,6 +4,7 @@
 # Used as source for ~/.xinitrc.
 
 numlockx on &
+xsetroot -cursor_name left_ptr &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &
 nm-applet &
 picom &

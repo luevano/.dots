@@ -1,11 +1,15 @@
 #!/bin/sh
 PANEL_FIFO=/tmp/panel-fifo
-PANEL_HEIGHT=24
-# PANEL_FONT="-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+PANEL_HEIGHT=20
+PANEL_FONT="Noto Sans Mono:size=10"
+PANEL_EMOJI_FONT0="Noto Color Emoji"
+PANEL_EMOJI_FONT1="Font Awesome 5 Free"
+PANEL_EMOJI_FONT2="Font Awesome 5 Brands"
+PANEL_EMOJI_FONT3="Font Awesome 5 Free Solid"
 PANEL_WM_NAME=bspwm_statusbar
 
 if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
-	printf "%s\n" "The status bar is already running." >&2
+	printf "%s\n" "The status bar is already running. Try pkill -x statusbar." >&2
 	exit 1
 fi
 
@@ -20,7 +24,7 @@ bspc subscribe report > "$PANEL_FIFO" &
 
 . statusbar_colors
 
-statusbar_bar1 < "$PANEL_FIFO" | lemonbar -a 32 -u 2 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "$PANEL_FONT" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" &
+statusbar_bar1 < "$PANEL_FIFO" | lemonbar -a 32 -u 2 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "$PANEL_FONT" -f "$PANEL_EMOJI_FONT0" -f "$PANEL_EMOJI_FONT1" -f "$PANEL_EMOJI_FONT2" -f "$PANEL_EMOJI_FONT3" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
 
 # This only really works for one monitor.
 # wid=$(xdo id -m -a "$PANEL_WM_NAME")

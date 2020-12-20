@@ -29,7 +29,7 @@ while read -r line ; do
 								# monitor
 								FG=$COLOR_MONITOR_FG
 								BG=$COLOR_MONITOR_BG
-								on_focused_monitor=
+								on_focused_monitor=0
 								;;
 							M*)
 								# focused monitor
@@ -39,7 +39,7 @@ while read -r line ; do
 								;;
 						esac
 						[ $num_mon -lt 2 ] && shift && continue
-						wm="${wm}%{F${FG}}%{B${BG}}%{A:bspc monitor -f ${name}:} ${name} %{A}%{B-}%{F-}"
+						wm="%{S${on_focused_monitor}}${wm}%{F${FG}}%{B${BG}}%{A:bspc monitor -f ${name}:} ${name} %{A}%{B-}%{F-}"
 						;;
 					[fFoOuU]*)
 						case $item in

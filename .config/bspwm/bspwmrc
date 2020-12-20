@@ -1,23 +1,35 @@
 #!/bin/sh
 
-# Checks if X program is already running, if not, run it.
-pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x statusbar > /dev/null || statusbar &
+# Checks if sxhkd is running, if not, run it.
+# Also use setsid so it's appart from status bar
+# and the kill doesn't ruin it.
+pgrep -x sxhkd > /dev/null || setsid sxhkd &
 
-# Multihead.
+# This starts or restarts statusbar. Be careful
+# with pkill, if neither of these two programs have
+# a 'setsid' prepended to their command, sxhdk wil crash.
+if [ $(pgrep -x statusbar | wc -l) = 1 ];then
+	pkill -x statusbar
+	statusbar &
+else
+	statusbar &
+fi
+
+# Multihead stuff.
 if [ $(uname -n) = "arch" ]; then
-	MAINMON="DP-0" 
+	MAINMON="DP-0"
 	SECMON="HDMI-0"
-	
-	bspc monitor $MAINMON -d 1 2 3 4 5
-	bspc monitor $SECMON -d 6 7 8 9 10
 
-	if [ $(pgrep -f bspwm_enforce_monitor_position) < 2]; then
+	# Run a script to select the main monitor.
+	if [ $(pgrep -f bspwm_enforce_monitor_position | wc -l) < 2]; then
 		bspwm_enforce_monitor_position $MAINMON '^1' &
 	else
 		killall bspwm_enforce_monitor_position
 		bspwm_enforce_monitor_position $MAINMON '^1' &
 	fi
+
+	bspc monitor $MAINMON -d 1 2 3 4 5
+	bspc monitor $SECMON -d 6 7 8 9 10
 else
 	bspc monitor -d I II III IV V VI VII VIII IX X
 fi
