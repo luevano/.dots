@@ -2,7 +2,7 @@
 
 # PS1 colors and style.
 autoload -U colors && colors
-PS1="%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue]%}%M %{$fg_bold[magenta]%}%(5~|%-2~/.../%2~|%~)%{$fg_bold[red]%}]%{$fg_bold[cyan]%}$%{$reset_color%} "
+PS1="%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue]%}%M %{$fg_bold[magenta]%}%(5~|%-2~/.../%2~|%~)%{$fg_bold[red]%}]%{$fg_bold[cyan]%}%#%{$reset_color%} "
 
 # Set LS_COLORS via dircolors.
 [[ -f $HOME/.config/dircolors ]] && eval "$(dircolors $HOME/.config/dircolors)"
@@ -24,6 +24,21 @@ zstyle ':completion:*' menu select
 compinit
 # Include hidden files in autocomplete.
 _comp_options+=(globdots)
+
+# Dynamic window title for zsh.
+case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term|alacritty)
+    local term_title () { print -n "\e]0;${(j: :q)@}\a" }
+    precmd () {
+      local DIR="$(print -P '[%c]%#')"
+      term_title "$DIR" "zsh"
+    }
+    preexec () {
+      local DIR="$(print -P '[%c]%#')"
+      local CMD="${(j:\n:)${(f)1}}"
+      term_title "$DIR" "$CMD"
+    }
+  ;;
+esac
 
 # Add syntax highlighting.
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
