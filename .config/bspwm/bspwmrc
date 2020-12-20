@@ -18,9 +18,6 @@ polybar_panel
 
 # Multihead stuff.
 if [ $(uname -n) = "arch" ]; then
-	export MAINMON="DP-0"
-	export SECMON="HDMI-0"
-
 	# Run a script to select the main monitor.
 	if [ $(pgrep -f bspwm_enforce_monitor_position | wc -l) < 2]; then
 		bspwm_enforce_monitor_position $MAINMON '^1' &
@@ -36,7 +33,8 @@ else
 fi
 
 # General config.
-bspc config border_width			5
+bspc config top_padding				24
+bspc config border_width			2
 bspc config window_gap				5
 bspc config split_ratio				0.52
 bspc config borderless_monocle		true

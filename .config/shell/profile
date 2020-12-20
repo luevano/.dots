@@ -4,6 +4,9 @@
 	## Modified env vars.
 export PATH="$PATH:$(du -L "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
+	## Useful vars.
+export MAINMON="DP-0"
+export SECMON="HDMI-0"
 	## Default programs.
 export EDITOR="nvim"
 export TERMINAL="alacritty"
