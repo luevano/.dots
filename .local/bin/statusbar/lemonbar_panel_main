@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. panel_colors
+. lemonbar_panel_colors
 
 while read -r line ; do
 	case $line in

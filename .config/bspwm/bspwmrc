@@ -4,16 +4,17 @@
 # Also use setsid so it's appart from status bar
 # and the kill doesn't ruin it.
 pgrep -x sxhkd > /dev/null || setsid sxhkd &
+polybar_panel
 
 # This starts or restarts panel. Be careful
 # with pkill, if neither of these two programs have
 # a 'setsid' prepended to their command, sxhdk wil crash.
-if [ $(pgrep -x panel | wc -l) = 1 ];then
-	pkill -x panel
-	panel &
-else
-	panel &
-fi
+# if [ $(pgrep -x lemonbar_panel | wc -l) = 1 ];then
+# 	killall lemonbar
+# 	lemonbar_panel &
+# else
+# 	lemonbar_panel &
+# fi
 
 # Multihead stuff.
 if [ $(uname -n) = "arch" ]; then

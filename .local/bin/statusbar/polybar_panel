@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Wait until the processes have been shut down
+while pgrep -u "$(id -ru)" -x polybar >/dev/null; do sleep 1; done
+
+# Launch bar1 and bar2
+bar1=main
+bar2=second
+echo "---" | tee -a /tmp/$bar1.log /tmp/$bar2.log
+
+polybar $bar1 >>/tmp/$bar1.log 2>&1 & disown
+
+# externo=$(xrandr --query | grep "HDMI1")
+# if [ ! "$externo" = "*disconnected*" ]; then
+#   MONITOR="HDMI1" polybar --reload $bar2 -c ~/.config/polybar/config >>/tmp/$bar2.log 2>&1 &
+# fi
+
+echo "Bars launched..."
