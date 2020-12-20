@@ -12,7 +12,7 @@ bar2=second
 echo "---" | tee -a /tmp/$bar1.log /tmp/$bar2.log
 
 polybar --reload $bar1 >> /tmp/$bar1.log 2>&1 & disown
-polybar --reload $bar2 >> /tmp&$bar2.log 2>&1 & disown
+polybar --reload $bar2 >> /tmp/$bar2.log 2>&1 & disown
 
 # To display the same bar on multiple monitors.
 # if type "xrandr"; then

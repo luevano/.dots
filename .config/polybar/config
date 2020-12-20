@@ -33,58 +33,8 @@ screenchange-reload = true
 margin-top = 0
 margin-bottom = 0
 include-file = /home/lz/.config/polybar/bspwm.ini
-
-[bar/main]
-monitor = ${env:MAINMON:HDMI-0}
-width = 100%
-height = 24
-offset-x = 0%
-offset-y = 0%
-radius = 0.0
-fixed-center = false
-
-font-0 = Noto Sans Mono:pixelsize=10;1
-# font-0 = fixed:pixelsize=10;1
-# font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-# font-2 = siji:pixelsize=10;1
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = ${colors.blue}
-
-border-size = 0
-border-color = ${colors.black}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 1
-module-margin-right = 2
-
-modules-left=bspwm
-modules-center=xwindow
-modules-right=date pulseaudio
-
-tray-position = right
-tray-padding = 2
-# tray-background = ${colors.cyan}
-
-override-redirect = true
-
-wm-restack = bspwm
-# wm-restack = i3
-
-# scroll-up = bspwm-desknext
-# scroll-down = bspwm-deskprev
-
-# scroll-up = i3wm-wsnext
-# scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
+include-file = /home/lz/.config/polybar/main.ini
+include-file = /home/lz/.config/polybar/second.ini
 
 [module/xwindow]
 type = internal/xwindow
@@ -394,4 +344,3 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 # menu-2-0-exec = sudo poweroff
 # menu-2-1 = cancel
 # menu-2-1-exec = menu-open-0
-
