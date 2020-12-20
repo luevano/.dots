@@ -11,8 +11,20 @@ bar1=main
 bar2=second
 echo "---" | tee -a /tmp/$bar1.log /tmp/$bar2.log
 
-polybar $bar1 >>/tmp/$bar1.log 2>&1 & disown
+polybar --reload $bar1 >> /tmp/$bar1.log 2>&1 & disown
+polybar --reload $bar2 >> /tmp&$bar2.log 2>&1 & disown
 
+# To display the same bar on multiple monitors.
+# if type "xrandr"; then
+#   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+#     MONITOR=$m polybar --reload example &
+#   done
+# else
+#   polybar --reload example &
+# fi
+
+# Taken from another script, this is for when
+# a new monitor is connected, I guess?
 # externo=$(xrandr --query | grep "HDMI1")
 # if [ ! "$externo" = "*disconnected*" ]; then
 #   MONITOR="HDMI1" polybar --reload $bar2 -c ~/.config/polybar/config >>/tmp/$bar2.log 2>&1 &
