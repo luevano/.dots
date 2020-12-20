@@ -1,38 +1,54 @@
 #!/bin/sh
-PANEL_FIFO=/tmp/panel-fifo
-PANEL_HEIGHT=20
-PANEL_FONT="Noto Sans Mono:size=10"
-PANEL_EMOJI_FONT0="Noto Color Emoji"
-PANEL_EMOJI_FONT1="Font Awesome 5 Free"
-PANEL_EMOJI_FONT2="Font Awesome 5 Brands"
-PANEL_EMOJI_FONT3="Font Awesome 5 Free Solid"
-PANEL_WM_NAME=bspwm_statusbar
+# General script that manages the statusbar/panel.
 
-if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
+STATUSBAR_FIFO=/tmp/panel-fifo
+STATUSBAR_HEIGHT=20
+STATUSBAR_FONT="Noto Sans Mono:size=10"
+STATUSBAR_EMOJI_FONT0="Noto Color Emoji"
+STATUSBAR_EMOJI_FONT1="Font Awesome 5 Free"
+STATUSBAR_EMOJI_FONT2="Font Awesome 5 Brands"
+STATUSBAR_EMOJI_FONT3="Font Awesome 5 Free Solid"
+STATUSBAR_WM_NAME=bspwm_statusbar
+. statusbar_colors
+
+
+if xdo id -a "$STATUSBAR_WM_NAME" > /dev/null ; then
 	printf "%s\n" "The status bar is already running. Try pkill -x statusbar." >&2
 	exit 1
 fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-mkfifo "$PANEL_FIFO"
 
-xtitle -sf 'T%s\n' > "$PANEL_FIFO" &
-# date +"S%d/%m%y %r" > "$PANEL_FIFO" &
-bspc subscribe report > "$PANEL_FIFO" &
+# Create a new FIFO. (Pipe)
+[ -e "$STATUSBAR_FIFO" ] && rm "$STATUSBAR_FIFO"
+mkfifo "$STATUSBAR_FIFO"
 
-. statusbar_colors
 
-statusbar_bar1 < "$PANEL_FIFO" | lemonbar -a 32 -u 2 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "$PANEL_FONT" -f "$PANEL_EMOJI_FONT0" -f "$PANEL_EMOJI_FONT1" -f "$PANEL_EMOJI_FONT2" -f "$PANEL_EMOJI_FONT3" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+# Here is where all the 'plugins' or 'blocks' for the statusbar
+# are run. They're piped into the FIFO for later reading.
+# In general you want them to print a letter at the beginning and then
+# the actual stuff to show on scren, so you can distinguish between them on the actual bars.
+xtitle -sf 'T%s\n' > "$STATUSBAR_FIFO" &
+# date +"C%d/%m%y %r" > "$STATUSBAR_FIFO" &
+bspc subscribe report > "$STATUSBAR_FIFO" &
+
+
+# Here you can start N amount of bars and each one would be
+# different if required. Piping into 'sh' is required for interaction
+# with the bar.
+statusbar_main < "$STATUSBAR_FIFO" | lemonbar -a 32 -u 2 -n "$STATUSBAR_WM_NAME" -g x$STATUSBAR_HEIGHT -f "$STATUSBAR_FONT" -f "$STATUSBAR_EMOJI_FONT0" -f "$STATUSBAR_EMOJI_FONT1" -f "$STATUSBAR_EMOJI_FONT2" -f "$STATUSBAR_EMOJI_FONT3" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+
 
 # This only really works for one monitor.
-# wid=$(xdo id -m -a "$PANEL_WM_NAME")
+# wid=$(xdo id -m -a "$STATUSBAR_WM_NAME")
 # xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
 
+# Set the bar only on top of the 'root' window, which is bspwm itself.
+# This, so you can fullscreen a program and it stays on top.
 bspid="$(xdo id -N Bspwm -n root | sort | head -n 1)"
 # The first part of the pipe is the "wid"
-xdo id -m -a "$PANEL_WM_NAME" | while read wid; do
+xdo id -m -a "$STATUSBAR_WM_NAME" | while read wid; do
 	xdo above -t "$bspid" "$wid"
 done
 

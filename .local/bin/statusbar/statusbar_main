@@ -2,16 +2,12 @@
 
 . statusbar_colors
 
-num_mon=$(bspc query -M | wc -l)
-
 while read -r line ; do
 	case $line in
-		S*)
-			# clock output
-			sys="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+		C*)
+			clock="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
 			;;
 		T*)
-			# xtitle output
 			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
 			;;
 		W*)
@@ -112,5 +108,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${sys}"
+	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${clock}"
 done

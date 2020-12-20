@@ -17,8 +17,8 @@ fi
 
 # Multihead stuff.
 if [ $(uname -n) = "arch" ]; then
-	MAINMON="DP-0"
-	SECMON="HDMI-0"
+	export MAINMON="DP-0"
+	export SECMON="HDMI-0"
 
 	# Run a script to select the main monitor.
 	if [ $(pgrep -f bspwm_enforce_monitor_position | wc -l) < 2]; then
