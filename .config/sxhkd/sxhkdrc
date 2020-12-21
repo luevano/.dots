@@ -67,7 +67,7 @@ super + ctrl + {m,x,y,z}
 # Focus/swap.
 #
 
-# Socus the node in the given direction.
+# Focus the node in the given direction.
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
