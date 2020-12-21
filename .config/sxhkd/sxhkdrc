@@ -22,7 +22,7 @@ super + Delete
 	$TERMINAL -e htop
 
 # Screenshots.
-{_,super, super + shift} + Print
+{_,super + , super + shift + } Print
 	$SSMGR {gui,full -c,full -p $SSPATH}
 
 #
@@ -34,8 +34,8 @@ super + shift + {e,r}
 	bspc {quit,wm -r}
 
 # Close and kill.
-super + {_,shift + }q
-	bspc node -{c,k}
+super + {shift + alt + ,shift + }q
+	bspc node -{k,c}
 
 # Alternate between the tiled and monocle layout.
 super + m
@@ -82,7 +82,7 @@ super + brace{left,right}
 	bspc desktop -f {prev,next}.local
 
 # Focus the last node/desktop.
-super + {Tab,dead_acute}
+super + {_,shift + } Tab
 	bspc {node,desktop} -f last
 
 # Focus the older or newer node in the focus history.
@@ -132,4 +132,5 @@ super + alt + {h,j,k,l}
 
 # Move a floating window.
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+	n=10; \
+	bspc node -v {-$n 0,0 $n,0 -$n,$n 0}
