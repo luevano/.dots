@@ -5,8 +5,10 @@
 # Basic.
 super + Return
 	$TERMINAL
-super + d
-	dmenu_run
+# Read after releasing 'd' because as soon
+# as dmenu runs it listens for kb presses.
+super + @d
+	dmenu_run -fn "Noto Sans Mono:size=12" -nb "$(xresource background)" -nf "$(xresource foreground)" -sb "$(xresource color4)" -sf "$(xresource color0)"
 super + Escape
 	pkill -USR1 -x sxhkd
 super + shift + Escape

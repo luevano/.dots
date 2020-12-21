@@ -3,6 +3,7 @@
 # Checks if sxhkd is running, if not, run it.
 # Also use setsid so it's appart from status bar
 # and the kill doesn't ruin it.
+feh --bg-fill ~/pix/wp/starwars_1.png
 pgrep -x sxhkd > /dev/null || setsid sxhkd &
 polybar_panel
 
