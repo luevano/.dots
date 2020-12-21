@@ -34,15 +34,53 @@ else
 	bspc monitor -d I II III IV V VI VII VIII IX X
 fi
 
-# General config.
-bspc config top_padding				24
-bspc config border_width			2
+#
+# Config.
+#
+
+# General.
+bspc config top_padding				34
+bspc config bottom_padding			10
+bspc config left_padding			10
+bspc config right_padding			10
+bspc config border_width			4
 bspc config window_gap				5
 bspc config split_ratio				0.52
 bspc config borderless_monocle		true
 bspc config gapless_monocle			true
 
-# Window rules.
+# Colors.
+# First get all colors.
+# COLOR_FOREGROUND=$(xresource foreground)
+# COLOR_BACKGROUND=$(xresource background)
+# COLOR_FOREGROUND_ALT=$(xresource selbackground)
+# COLOR_BACKGROUND_ALT=$(xresource selbackground)
+# COLOR_BLACK=$(xresource color0)
+COLOR_BLACK_ALT=$(xresource color8)
+# COLOR_RED=$(xresource color1)
+# COLOR_RED_ALT=$(xresource color9)
+# COLOR_GREEN=$(xresource color2)
+# COLOR_GREEN_ALT=$(xresource color10)
+COLOR_YELLOW=$(xresource color3)
+# COLOR_YELLOW_ALT=$(xresource color11)
+# COLOR_BLUE=$(xresource color4)
+# COLOR_BLUE_ALT=$(xresource color12)
+# COLOR_PURPLE=$(xresource color5)
+# COLOR_PURPLE_ALT=$(xresource color13)
+COLOR_CYAN=$(xresource color6)
+# COLOR_CYAN_ALT=$(xresource color14)
+# COLOR_WHITE=$(xresource color7)
+# COLOR_WHITE_ALT=$(xresource color15)
+
+bspc config normal_border_color				$COLOR_BLACK_ALT
+bspc config active_border_color				$COLOR_YELLOW
+bspc config focused_border_color			$COLOR_CYAN
+
+#
+# Rules.
+#
+
+# Windows.
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
 # bspc rule -a mplayer2 state=floating
