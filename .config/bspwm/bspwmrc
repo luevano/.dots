@@ -17,6 +17,8 @@ polybar_panel
 # fi
 
 # Multihead stuff.
+# I changed hostname for uname -u, because
+# I didn't know hostname was in inetutils package, kek.
 if [ $(uname -n) = "arch" ]; then
 	# Run a script to select the main monitor.
 	if [ $(pgrep -f bspwm_enforce_monitor_position | wc -l) < 2]; then

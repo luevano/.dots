@@ -6,7 +6,7 @@
 super + Return
 	$TERMINAL
 super + d
-	i3-dmenu-desktop
+	dmenu_run
 super + Escape
 	pkill -USR1 -x sxhkd
 super + shift + Escape
@@ -134,3 +134,97 @@ super + alt + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	n=10; \
 	bspc node -v {-$n 0,0 $n,0 -$n,$n 0}
+
+#
+# Extra XF86 keys.
+#
+{_,shift + } XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +{2,10}%
+
+{_,shift + } XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -{2,10}%
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+F86AudioPrev
+	playerctl previous
+F86AudioNext
+	playerctl next
+F86AudioPlay
+	playerctl play-pause
+
+# XF86AudioMedia
+# Same as XF86AudioPlay in my keyboard. That's why the 'play-pause' option is used.
+# XF86AudioPause
+# XF86AudioStop
+# XF86AudioRecord
+# XF86AudioRewind
+# XF86AudioForward
+# XF86AudioMicMute
+# 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# XF86PowerOff
+# XF86Copy
+# XF86Open
+# XF86Past
+# XF86Cut
+# XF86MenuKB
+# XF86Calculator
+# This binding is typically mapped by systemd automatically.
+# XF86Sleep
+# XF86WakeUp
+# XF86Explorer
+# XF86Send
+# XF86Xfer
+# XF86WWW
+# XF86DOS
+# XF86ScreenSaver
+# XF86RotateWindows
+# XF86TaskPane
+# XF86Favorites
+# XF86MyComputer
+# XF86Back
+# XF86Forward
+# XF86Eject
+# XF86Phone
+# XF86Tools
+# XF86HomePage
+# XF86Reload
+# XF86ScrollUp
+# XF86ScrollDown
+# XF86New
+# XF86LaunchA
+# XF86LaunchB
+# XF86Launch2
+# XF86Launch3
+# XF86Launch4
+# XF86Launch5
+# XF86Launch6
+# XF86Launch7
+# XF86Launch8
+# XF86Launch9
+# XF86TouchpadToggle
+# XF86TouchpadOn
+# XF86TouchpadOff
+# XF86Suspend
+# XF86Close
+# XF86WebCam
+# XF86Mail
+# XF86Messenger
+# XF86Search
+# XF86Go
+# XF86Finance
+# XF86Game
+# XF86Shop
+# XF86MonBrightnessDown
+# XF86MonBrightnessUp
+# XF86Display
+# XF86KbdLightOnOff
+# XF86KbdBrightnessDown
+# XF86KbdBrightnessUp
+# XF86Reply
+# XF86MailForward
+# XF86Save
+# XF86Documents
+# XF86Battery
+# XF86Bluetooth
+# XF86WLAN

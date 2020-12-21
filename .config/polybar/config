@@ -30,7 +30,7 @@ screenchange-reload = true
 # pseudo-transparency = false
 
 [global/wm]
-margin-top = 0
+margin-top = 40
 margin-bottom = 0
 include-file = /home/lz/.config/polybar/main.ini
 include-file = /home/lz/.config/polybar/second.ini

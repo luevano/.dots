@@ -3,6 +3,7 @@
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.
 
+setsid sxhkd &
 numlockx on &
 xsetroot -cursor_name left_ptr &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &

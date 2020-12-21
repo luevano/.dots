@@ -15,19 +15,19 @@ font pango:monospace 10
 	# Totally needed.
 	set $mon2 "HDMI-0"
 	set $mon1 "DP-0"
-	set $dmenu --no-startup-id i3-dmenu-desktop
-	set $term --no-startup-id $TERMINAL
-	set $fmgr $FILE
-	set $ibwsr --no-startup-id $BROWSER
-	set $edit --no-startup-id $EDITOR
-	set $read --no-startup-id $READER
-	set $rstbar pkill -RTMIN+1 $STATUSBAR
+	# set $dmenu --no-startup-id i3-dmenu-desktop
+	# set $term --no-startup-id $TERMINAL
+	# set $fmgr $FILE
+	# set $ibwsr --no-startup-id $BROWSER
+	# set $edit --no-startup-id $EDITOR
+	# set $read --no-startup-id $READER
+	# set $rstbar pkill -RTMIN+1 i3blocks
 	# Other.
-	set $ss --no-startup-id $SSMGR
-	set $sspath "$HOME/pix/ss/"
-	set $music --no-startup-id $MUSIC
-	set $msgs --no-startup-id $MSGCHAT
-	set $mail --no-startup-id $MAILMGR
+	# set $ss --no-startup-id $SSMGR
+	# set $sspath "$HOME/pix/ss/"
+	# set $music --no-startup-id $MUSIC
+	# set $msgs --no-startup-id $MSGCHAT
+	# set $mail --no-startup-id $MAILMGR
 ## Colors from ~/.Xresources.
 	# set_from_resource $bg background
 	# set_from_resource $fg foreground
@@ -147,25 +147,25 @@ client.background		$c15
 
 ##--Keybindings--##
 ## Basic bindings.
-	bindsym $mod+Shift+c reload
-	bindsym $mod+Shift+r restart
-	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+	# bindsym $mod+Shift+c reload
+	# bindsym $mod+Shift+r restart
+	# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 ## Apps.
-	bindsym $mod+Return exec $term
-	bindsym $mod+Delete exec $term -e htop
-	bindsym $mod+Shift+w exec $ibwsr
-	bindsym $mod+Shift+f workspace $ws4 exec $term -e $fmgr
+	# bindsym $mod+Return exec $term
+	# bindsym $mod+Delete exec $term -e htop
+	# bindsym $mod+Shift+w exec $ibwsr
+	# bindsym $mod+Shift+f workspace $ws4 exec $term -e $fmgr
 	# bindsym $mod+m exec $music
 	# bindsym $mod+Shift+m exec $msgs
-	bindsym $mod+Shift+m exec $mail
+	# bindsym $mod+Shift+m exec $mail
 	# Screenshots.
-	bindsym Print exec $ss gui
-	bindsym $mod+Print exec $ss full -c
-	bindsym $mod+Shift+Print exec $ss full -p $sspath
+	# bindsym Print exec $ss gui
+	# bindsym $mod+Print exec $ss full -c
+	# bindsym $mod+Shift+Print exec $ss full -p $sspath
 
 ## Dmenu.
-	bindsym $mod+d exec $dmenu
+	# bindsym $mod+d exec $dmenu
 
 ## Navigation and window options.
 	# Basics.
@@ -260,15 +260,15 @@ client.background		$c15
 	}
 
 ##--Extra XF86 Keys--##
-bindsym XF86AudioRaiseVolume		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $rstbar
-bindsym Shift+XF86AudioRaiseVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $rstbar
-bindsym XF86AudioLowerVolume		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $rstbar
-bindsym Shift+XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $rstbar
-bindsym XF86AudioMute				exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $rstbar
+# bindsym XF86AudioRaiseVolume		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $rstbar
+# bindsym Shift+XF86AudioRaiseVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $rstbar
+# bindsym XF86AudioLowerVolume		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $rstbar
+# bindsym Shift+XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $rstbar
+# bindsym XF86AudioMute				exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $rstbar
 # bindsym XF86AudioMedia			exec
-bindsym XF86AudioPrev				exec playerctl previous && $rstbar
-bindsym XF86AudioNext				exec playerctl next && $rstbar
-bindsym XF86AudioPlay				exec playerctl play-pause && $rstbar
+# bindsym XF86AudioPrev				exec playerctl previous && $rstbar
+# bindsym XF86AudioNext				exec playerctl next && $rstbar
+# bindsym XF86AudioPlay				exec playerctl play-pause && $rstbar
 # bindsym XF86AudioPause			exec # Same as XF86AudioPlay in my keyboard. That's why the 'play-pause' option is used.
 # bindsym XF86AudioStop				exec
 # bindsym XF86AudioRecord			exec
