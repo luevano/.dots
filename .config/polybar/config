@@ -1,26 +1,4 @@
 # vim:ft=dosini
-[colors]
-foreground = ${xrdb:foreground:#F8F8F2}
-background = ${xrdb:background:#282A36}
-foreground-alt = ${xrdb:selbackground:#000000}
-background-alt = ${xrdb:selbackground:#F1FA8C}
-black = ${xrdb:color0:#000000}
-black-alt = ${xrdb:color8:#4D4D4D}
-red = ${xrdb:color1:#FF5555}
-red-alt = ${xrdb:color9:#FF6E67}
-green = ${xrdb:color2:#50FA7B}
-green-alt = ${xrdb:color10:#5AF78E}
-yellow = ${xrdb:color3:#F1FA8C}
-yellow-alt = ${xrdb:color11:#F4F99D}
-blue = ${xrdb:color4:#BD93F9}
-blue-alt = ${xrdb:color12:#CAA9FA}
-purple = ${xrdb:color5:#FF79C6}
-purple-alt = ${xrdb:color13:#FF92D0}
-cyan = ${xrdb:color6:#8BE9FD}
-cyan-alt = ${xrdb:color14:#9AEDFE}
-white = ${xrdb:color7:#BFBFBF}
-white-alt = ${xrdb:color15:#E6E6E6}
-
 [settings]
 screenchange-reload = true
 # compositing-background = xor
@@ -32,6 +10,9 @@ screenchange-reload = true
 [global/wm]
 margin-top = 24
 margin-bottom = 0
+
+# Include colors.
+include-file = /home/lz/.config/polybar/colors.ini
 
 # Include bars.
 include-file = /home/lz/.config/polybar/common.ini
