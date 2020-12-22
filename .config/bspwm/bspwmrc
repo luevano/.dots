@@ -1,11 +1,19 @@
 #!/bin/sh
 
+#
+# Always running programs.
+#
+
+feh --bg-fill ~/pix/wp/starwars_1.png
+# Since polybar_panel already manages the starting
+# of the actual polybar(s), just check if (any) polybar
+# is running, if not, run the specified command to run them.
+# The reload of polybar_panel is managed by sxhkd, as it should be.
+pgrep -x polybar > /dev/null || polybar_panel
 # Checks if sxhkd is running, if not, run it.
 # Also use setsid so it's appart from status bar
 # and the kill doesn't ruin it.
-feh --bg-fill ~/pix/wp/starwars_1.png
 pgrep -x sxhkd > /dev/null || setsid sxhkd &
-polybar_panel
 
 # This starts or restarts panel. Be careful
 # with pkill, if neither of these two programs have

@@ -3,10 +3,9 @@
 # This is run when a display manager logs in.
 # Used as source for ~/.xinitrc.
 
-setsid sxhkd &
-numlockx on &
-xsetroot -cursor_name left_ptr &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &
+xsetroot -cursor_name left_ptr &
+numlockx on &
 nm-applet &
 picom &
 dunst &
@@ -15,6 +14,7 @@ flameshot &
 # Not really needed when using startx (in general the config in ~/.profile)
 # pulseaudio --start &
 pasystray &
+setsid sxhkd &
 
 # At the end, start the WM.
 exec bspwm
