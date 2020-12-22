@@ -28,16 +28,11 @@ include-file = $XDG_CONFIG_HOME/polybar/powermenu.ini
 include-file = $XDG_CONFIG_HOME/polybar/cpu.ini
 include-file = $XDG_CONFIG_HOME/polybar/memory.ini
 include-file = $XDG_CONFIG_HOME/polybar/xkeyboard.ini
+include-file = $XDG_CONFIG_HOME/polybar/filesystem.ini
 
-# [module/filesystem]
-# type = internal/fs
-# interval = 25
 
-# mount-0 = /
-
-# label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-# label-unmounted = %mountpoint% not mounted
-# label-unmounted-foreground = ${colors.foreground-alt}
+# Other modules that came by default on the example config.
+# The ones that I configured are on separate ini files.
 
 # [module/mpd]
 # type = internal/mpd
