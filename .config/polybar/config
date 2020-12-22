@@ -12,37 +12,22 @@ margin-top = 24
 margin-bottom = 0
 
 # Include colors.
-include-file = /home/lz/.config/polybar/colors.ini
+include-file = $XDG_CONFIG_HOME/polybar/colors.ini
 
 # Include bars.
-include-file = /home/lz/.config/polybar/common.ini
-include-file = /home/lz/.config/polybar/main.ini
-include-file = /home/lz/.config/polybar/second.ini
+include-file = $XDG_CONFIG_HOME/polybar/common.ini
+include-file = $XDG_CONFIG_HOME/polybar/main.ini
+include-file = $XDG_CONFIG_HOME/polybar/second.ini
 
 # Include modules.
-include-file = /home/lz/.config/polybar/bspwm.ini
-include-file = /home/lz/.config/polybar/xwindow.ini
-include-file = /home/lz/.config/polybar/pulseaudio.ini
-include-file = /home/lz/.config/polybar/date.ini
-include-file = /home/lz/.config/polybar/powermenu.ini
-include-file = /home/lz/.config/polybar/cpu.ini
-include-file = /home/lz/.config/polybar/ram.ini
-
-# [module/xkeyboard]
-# type = internal/xkeyboard
-# blacklist-0 = num lock
-
-# format-prefix = " "
-# format-prefix-foreground = ${colors.foreground-alt}
-# format-prefix-underline = ${colors.cyan}
-
-# label-layout = %layout%
-# label-layout-underline = ${colors.cyan}
-
-# label-indicator-padding = 2
-# label-indicator-margin = 1
-# label-indicator-background = ${colors.cyan}
-# label-indicator-underline = ${colors.cyan}
+include-file = $XDG_CONFIG_HOME/polybar/bspwm.ini
+include-file = $XDG_CONFIG_HOME/polybar/xwindow.ini
+include-file = $XDG_CONFIG_HOME/polybar/pulseaudio.ini
+include-file = $XDG_CONFIG_HOME/polybar/date.ini
+include-file = $XDG_CONFIG_HOME/polybar/powermenu.ini
+include-file = $XDG_CONFIG_HOME/polybar/cpu.ini
+include-file = $XDG_CONFIG_HOME/polybar/memory.ini
+include-file = $XDG_CONFIG_HOME/polybar/xkeyboard.ini
 
 # [module/filesystem]
 # type = internal/fs

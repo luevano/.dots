@@ -11,9 +11,12 @@ super + @d
 	dmenu_run -fn "Noto Sans Mono:size=12" -nb "$(xresource background)" -nf "$(xresource foreground)" -sb "$(xresource color4)" -sf "$(xresource color0)"
 super + Escape
 	pkill -USR1 -x sxhkd
+# Inside polybar_panel, it actually kills it and then starts it again.
 super + shift + Escape
-	pkill -x statusbar\
-	statusbar
+	polybar_panel
+# Change keyboard layout.
+super + space
+	setxkbmap -option grp:win_space_toggle latam,us
 
 # Run programs.
 super + shift + w
@@ -26,11 +29,6 @@ super + Delete
 # Screenshots.
 {_,super + , super + shift + } Print
 	$SSMGR {gui,full -c,full -p $SSPATH}
-
-# Reload polybar(s).
-# Inside polybar_panel, it actually kills it and then starts it again.
-super + shift + p
-	polybar_panel
 
 #
 # bspwm keybindings.
