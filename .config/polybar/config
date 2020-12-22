@@ -30,10 +30,15 @@ screenchange-reload = true
 # pseudo-transparency = false
 
 [global/wm]
-margin-top = 40
+margin-top = 24
 margin-bottom = 0
+
+# Include bars.
+include-file = /home/lz/.config/polybar/common.ini
 include-file = /home/lz/.config/polybar/main.ini
 include-file = /home/lz/.config/polybar/second.ini
+
+# Include modules.
 include-file = /home/lz/.config/polybar/bspwm.ini
 include-file = /home/lz/.config/polybar/xwindow.ini
 include-file = /home/lz/.config/polybar/pulseaudio.ini
