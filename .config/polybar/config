@@ -30,7 +30,7 @@ include-file = $XDG_CONFIG_HOME/polybar/memory.ini
 include-file = $XDG_CONFIG_HOME/polybar/xkeyboard.ini
 include-file = $XDG_CONFIG_HOME/polybar/filesystem.ini
 include-file = $XDG_CONFIG_HOME/polybar/eth.ini
-# include-file = $XDG_CONFIG_HOME/polybar/wlan.ini
+include-file = $XDG_CONFIG_HOME/polybar/wlan.ini
 
 
 # Other modules that came by default on the example config.
@@ -48,28 +48,6 @@ include-file = $XDG_CONFIG_HOME/polybar/eth.ini
 
 # label-song-maxlen = 25
 # label-song-ellipsis = true
-
-# [module/wlan]
-# type = internal/network
-# interface = wlp6s0
-# interval = 3.0
-
-# format-connected = <ramp-signal> <label-connected>
-# format-connected-underline = #9f78e1
-# label-connected = %essid%
-
-# format-disconnected =
-# format-disconnected = <label-disconnected>
-# format-disconnected-underline = ${self.format-connected-underline}
-# label-disconnected = %ifname% disconnected
-# label-disconnected-foreground = ${colors.foreground-alt}
-
-# ramp-signal-0 = 
-# ramp-signal-1 = 
-# ramp-signal-2 = 
-# ramp-signal-3 = 
-# ramp-signal-4 = 
-# ramp-signal-foreground = ${colors.foreground-alt}
 
 # [module/temperature]
 # type = internal/temperature
