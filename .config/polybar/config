@@ -31,6 +31,7 @@ include-file = $XDG_CONFIG_HOME/polybar/xkeyboard.ini
 include-file = $XDG_CONFIG_HOME/polybar/filesystem.ini
 include-file = $XDG_CONFIG_HOME/polybar/eth.ini
 include-file = $XDG_CONFIG_HOME/polybar/wlan.ini
+include-file = $XDG_CONFIG_HOME/polybar/dunst.ini
 
 
 # Other modules that came by default on the example config.
