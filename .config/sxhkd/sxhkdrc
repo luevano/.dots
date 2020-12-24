@@ -35,8 +35,10 @@ super + Delete
 #
 
 # Quit/restart bspwm.
-super + shift + {e,r}
-	bspc {quit,wm -r}
+# super + shift + {e,r}
+# 	bspc {quit,wm -r}
+super + shift + r
+	bspc wm -r
 
 # Close and kill.
 super + {shift + alt + ,shift + }q
