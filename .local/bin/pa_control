@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# This script is just used to get the current PA sink,
+# and to change to the 'next' sink. Using only 'pactl'.
+
 default_sink=
 default_sink_nickname=
 
