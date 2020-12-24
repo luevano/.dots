@@ -1,3 +1,5 @@
 #!/bin/sh
 
-xrdb -query | grep -E "^(bspwm|\*)\.$1" | sed -r "s/^[^:]+:\s+//" | tail -n 1
+# This was specific for when you have bspwm.something defined in ~/.Xresources.
+# xrdb -query | grep -E "^(bspwm|\*)\.$1" | sed -r "s/^[^:]+:\s+//" | tail -n 1
+xrdb -query | grep $1 | sed -e 's/\ //' -e 's/\t//' | cut -d: -f2 | head -1
