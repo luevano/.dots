@@ -62,7 +62,8 @@ bspc config borderless_monocle		true
 bspc config gapless_monocle			true
 
 # Could try poniter_follows_monitor instead.
-bspc config pointer_follows_focus	true
+# This fucks up when switching tags via polybar.
+# bspc config pointer_follows_focus	true
 
 # Colors.
 # First get all colors.

@@ -1,0 +1,100 @@
+#!/bin/sh
+
+default_sink=
+default_sink_nickname=
+
+get_default_sink (){
+	default_sink="$(pactl info | grep Sink | awk '{print $3}')"
+}
+
+get_default_sink_nickname (){
+	sink_list="$(pactl list sinks\
+		| grep -e Name -e alsa.card_name\
+		| sed -e 's/^\ *//' -e 's/\ *$//')"
+
+	found_default_sink="0"
+
+	while IFS= read line; do
+		# Trim line depending on content.
+		if [ "$(echo $line | cut -d' ' -f1)" = "Name:" ]; then
+			line="$(echo $line | cut -d' ' -f2)"
+		else
+			line="$(echo $line | cut -d' ' -f3- | sed 's/\"//g')"
+		fi
+
+
+		# If fond default_sink, get and set the nickname, then exit.
+		if [ $found_default_sink = "1" ]; then
+			default_sink_nickname="$line"
+			break;
+		fi
+
+		# If current line is the default sink, set a flag.
+		if [ $default_sink = "$line" ]; then
+			found_default_sink="1"
+		fi
+	done <<EOF
+	$sink_list
+EOF
+# The above line need not to have a space before EOF.
+}
+
+# Similar to get_default_sink_nickname, just shorter.
+set_next_sink (){
+	sink_list="$(pactl list sinks\
+		| grep -e Name\
+		| sed -e 's/^\ *//' -e 's/\ *$//'\
+		| cut -d' ' -f2)"
+
+	# Some flags because I don't know a better way to do this, lol.
+	found_default_sink="0"
+	setted_after_finding_default_sink="0"
+	first_found_sink="0"
+
+	while IFS= read line; do
+		if [ $found_default_sink = "1" ]; then
+			pactl set-default-sink $line
+			setted_after_finding_default_sink="1"
+		fi
+
+		if [ $default_sink = $line ]; then
+			found_default_sink="1"
+		else
+			# In case the first line is not he default sink,
+			# store the first found sink in case the default sink,
+			# is at the end of the variable (in which case the while loop
+			# exits and we no longer know which one is next [next would be the first
+			# line ;) ])
+			if [ $first_found_sink = "0" ]; then
+				first_found_sink="$line"
+			fi
+		fi
+	done <<EOF
+	$sink_list
+EOF
+	# If the next sink wasn't set after finding the default sink, it means
+	# the next sink is actually the first sink, so, set it here
+	if [ $setted_after_finding_default_sink = "0" ]; then
+		pactl set-default-sink $first_found_sink
+	fi
+}
+
+case "$1" in
+	get-sink)
+		get_default_sink
+		get_default_sink_nickname
+
+		notify-send "Current sink" "$default_sink_nickname"
+		;;
+	next-sink)
+		get_default_sink
+		get_default_sink_nickname
+
+		set_next_sink
+
+		get_default_sink
+		get_default_sink_nickname
+
+		notify-send "Changed to sink" "$(echo $default_sink_nickname)"
+		;;
+esac
