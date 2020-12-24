@@ -48,7 +48,7 @@ fi
 #
 
 # General.
-bspc config top_padding				34
+bspc config top_padding				35
 bspc config bottom_padding			10
 bspc config left_padding			10
 bspc config right_padding			10

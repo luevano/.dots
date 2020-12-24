@@ -8,7 +8,7 @@ screenchange-reload = true
 # pseudo-transparency = false
 
 [global/wm]
-margin-top = 24
+margin-top = 0
 margin-bottom = 0
 
 # Include colors.
