@@ -14,15 +14,31 @@ show_panel (){
 }
 
 send_notification (){
-	artist="$(playerctl metadata artist)"
-	album="$(playerctl metadata album)"
-	title="$(playerctl metadata title)"
+	player_status=$(playerctl status 2> /dev/null)
+	if [ "$player_status" = "Playing" ]; then
+		artist="$(playerctl metadata artist)"
+		album="$(playerctl metadata album)"
+		title="$(playerctl metadata title)"
 
-	if [ $album = "\n"]; then
-		notify-send "$artist - $album" "$title"
+		if [ $album = "\n"]; then
+			notify-send " $artist - $album" "$title"
+		else
+			notify-send " $artist" "$title"
+		fi
+	elif [ "$player_status" = "Paused" ]; then
+		artist="$(playerctl metadata artist)"
+		album="$(playerctl metadata album)"
+		title="$(playerctl metadata title)"
+
+		if [ $album = "\n"]; then
+			notify-send " (Paused) $artist - $album" "$title"
+		else
+			notify-send " (Paused) $artist" "$title"
+		fi
 	else
-		notify-send "$artist" "$title"
+		notify-send " Nothing playing"
 	fi
+
 }
 
 case $1 in
