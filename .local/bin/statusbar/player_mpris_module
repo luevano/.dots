@@ -1,0 +1,35 @@
+#!/bin/sh
+
+show_panel (){
+	# Needs to send to /dev/null for the actual else case.
+	player_status=$(playerctl status 2> /dev/null)
+
+	if [ "$player_status" = "Playing" ]; then
+		echo " $(playerctl metadata artist) - $(playerctl metadata title)"
+	elif [ "$player_status" = "Paused" ]; then
+		echo "%{F$(xresource color8)} $(playerctl metadata artist) - $(playerctl metadata title)%{F-}"
+	else
+		echo "%{F$(xresource color8)} (nothing playing)"
+	fi
+}
+
+send_notification (){
+	artist="$(playerctl metadata artist)"
+	album="$(playerctl metadata album)"
+	title="$(playerctl metadata title)"
+
+	if [ $album = "\n"]; then
+		notify-send "$artist - $album" "$title"
+	else
+		notify-send "$artist" "$title"
+	fi
+}
+
+case $1 in
+	show)
+		show_panel
+		;;
+	notify)
+		send_notification
+		;;
+esac
