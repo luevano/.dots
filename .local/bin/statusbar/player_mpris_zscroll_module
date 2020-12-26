@@ -4,18 +4,22 @@
 # with zscroll.
 
 icon=" "
+length=50
+delay=0.1
+b_padding=$icon
+a_padding=""
+p_padding="  |  "
 
 show_panel (){
-	# Needs to send to /dev/null for the actual else case.
-	player_status=$(playerctl status 2> /dev/null)
+	zscroll -d $delay -l $length \
+		-M "pctl_status status" \
+		-m "Playing" "--scroll-padding '$p_padding' --scroll 1" \
+		-m "Paused" "--scroll 0" \
+		-m "Stopped" "--scroll 0" \
+		-m "NRP" "--scroll 0" \
+		-u true "pctl_status text" &
 
-	if [ "$player_status" = "Playing" ]; then
-		echo "$icon $(playerctl metadata artist) - $(playerctl metadata title)"
-	elif [ "$player_status" = "Paused" ]; then
-		echo "%{F$(xresource color8)}$icon $(playerctl metadata artist) - $(playerctl metadata title)%{F-}"
-	else
-		echo "%{F$(xresource color8)}$icon (nothing playing)"
-	fi
+	wait
 }
 
 send_notification (){
