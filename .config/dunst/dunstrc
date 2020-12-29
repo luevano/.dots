@@ -2,7 +2,7 @@
 [global]
 	monitor = 0
 	follow = mouse
-	geometry = "300x4-15+30"
+	geometry = "300x4-15+40"
 	indicate_hidden = yes
 	shrink = yes
 	transparency = 0
@@ -47,7 +47,7 @@
 	sticky_history = yes
 	history_length = 20
 
-    ## Misc advanced.
+	## Misc advanced.
 	dmenu = /usr/bin/dmenu -p dunst:
 	browser = /usr/bin/firefox -new-tab
 	always_run_script = true

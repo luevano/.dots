@@ -154,13 +154,13 @@ super + {Left,Down,Up,Right}
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-F86AudioPrev
+XF86AudioPrev
 	playerctl previous
 
-F86AudioNext
+XF86AudioNext
 	playerctl next
 
-F86AudioPlay
+XF86AudioPlay
 	playerctl play-pause
 
 # XF86AudioMedia

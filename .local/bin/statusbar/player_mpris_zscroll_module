@@ -3,10 +3,10 @@
 # This is a static status module, for a dynamic one, there is the option
 # with zscroll.
 
-icon=" "
+icon=""
 length=50
 delay=0.1
-b_padding=$icon
+b_padding="$icon "
 a_padding=""
 p_padding="  |  "
 
