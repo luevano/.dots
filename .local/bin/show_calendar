@@ -1,0 +1,10 @@
+#!/bin/sh
+
+mouse_position="$(xdotool getmouselocation | cut -d' ' -f-2 | sed -e 's/x://' -e 's/y://')"
+w=200
+h=200
+
+x=$(echo $mouse_position | cut -d' ' -f1)
+y=$(echo $mouse_position | cut -d' ' -f2)
+
+yad --calendar --close-on-unfocus --no-buttons --undecorated --fixed --geometry=$w\x$h+$(($x - $w/2 - 30))+$(($y + 30))

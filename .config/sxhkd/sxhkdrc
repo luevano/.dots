@@ -154,14 +154,16 @@ super + {Left,Down,Up,Right}
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-XF86AudioPrev
-	playerctl previous
+# Actually, not required to separate mpc and pctl here nor
+# on next, but still...
+{_,shift + } XF86AudioPrev
+	{mpc -q prev, playerctl previous}
 
-XF86AudioNext
-	playerctl next
+{_,shift + } XF86AudioNext
+	{mpc -q, playerctl} next
 
-XF86AudioPlay
-	playerctl play-pause
+{_,shift + } XF86AudioPlay
+	{mpc -q toggle, playerctl play-pause}
 
 # XF86AudioMedia
 # Same as XF86AudioPlay in my keyboard. That's why the 'play-pause' option is used.
