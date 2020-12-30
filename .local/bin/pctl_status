@@ -1,30 +1,110 @@
-#!/bin/bash
+#!/bin/sh
 
-playerctl_status=$(playerctl status 2>/dev/null)
-exit_code=$?
+get_pctl_status () {
+	player="$(check_for_mpd)"
 
-if [ $exit_code -eq 0 ]; then
-	status=$playerctl_status
-else
-	status="NPF"
-fi
+	if [ "$player" = "" ]; then
+		playerctl_status=$(playerctl status 2>/dev/null)
+	else
+		playerctl_status=$(playerctl -p "$player" status 2>/dev/null)
+	fi
+	exit_code=$?
 
-case $1 in
-	status)
-		echo "$status"
-		;;
-	text)
-		artist="$(playerctl metadata artist 2>/dev/null)"
-		title="$(playerctl metadata title 2>/dev/null)"
+	if [ $exit_code -eq 0 ]; then
+		echo "$playerctl_status"
+	else
+		echo "NPF"
+	fi
+}
 
+check_for_mpd () {
+	pctl_players="$(playerctl -l)"
+
+	while IFS= read line; do
+		line="$(echo $line | sed -e 's/\ //')"
+
+		if [ "$line" = "mpd" ]; then
+			echo "$line"
+		fi
+	done <<EOF
+	$pctl_players
+EOF
+}
+
+get_display_text () {
+	player="$(check_for_mpd)"
+	status="$(get_pctl_status "$player")"
+
+	if [ "$player" = "mpd" ]; then
 		if [ "$status" = "Stopped" ]; then
 			echo "%{F$(xresource color8)}No music playing%{F}"
 		elif [ "$status" = "Paused" ]; then
+			artist="$(mpc --format '[%albumartist%]|[%artist%]' current)"
+			title="$(mpc --format '%title%' current)"
+
 			echo "%{F$(xresource color8)}$artist - $title%{F}"
 		elif [ "$status" = "NPF" ]; then
 			echo "%{F$(xresource color8)}No player found%{F}"
 		else
+			artist="$(mpc --format '[%albumartist%]|[%artist%]' current)"
+			title="$(mpc --format '%title%' current)"
+
 			echo "$artist - $title"
 		fi
+	else
+		if [ "$status" = "Stopped" ]; then
+			echo "%{F$(xresource color8)}No music playing%{F}"
+		elif [ "$status" = "Paused" ]; then
+			artist="$(playerctl metadata artist)"
+			title="$(playerctl metadata title)"
+
+			echo "%{F$(xresource color8)}$artist - $title%{F}"
+		elif [ "$status" = "NPF" ]; then
+			echo "%{F$(xresource color8)}No player found%{F}"
+		else
+			artist="$(playerctl metadata artist)"
+			title="$(playerctl metadata title)"
+
+			echo "$artist - $title"
+		fi
+	fi
+}
+
+get_metadata () {
+	player="$(check_for_mpd)"
+	status="$(get_pctl_status "$player")"
+
+	if [ "$player" = "mpd" ]; then
+		if [ "$status" = "Playing" ] || [ "$status" = "Paused" ]; then
+			artist="$(mpc --format '[%albumartist%]|[%artist%]' current)"
+			album="$(mpc --format '%album%' current)"
+			title="$(mpc --format '%title%' current)"
+
+			echo "yes>$artist>$album>$title"
+		fi
+	else
+		if [ "$status" = "Playing" ] || [ "$status" = "Paused" ]; then
+			artist="$(playerctl metadata artist)"
+			album="$(playerctl metadata album)"
+			title="$(playerctl metadata title)"
+
+			if [ "$album" = "" ]; then
+				echo "no>$artist>$title"
+			else
+				echo "yes>$artist>$album>$title"
+			fi
+		fi
+	fi
+}
+
+case $1 in
+	status)
+		get_pctl_status
+		;;
+	text)
+		get_display_text
+		;;
+	get-metadata)
+		get_metadata
 		;;
 esac

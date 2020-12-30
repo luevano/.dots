@@ -39,13 +39,13 @@
 	show_indicators = yes
 
 	## Icons.
-	icon_position = off
+	icon_position = on
 	max_icon_size = 32
 	icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 	## History.
 	sticky_history = yes
-	history_length = 20
+	history_length = 100
 
 	## Misc advanced.
 	dmenu = /usr/bin/dmenu -p dunst:

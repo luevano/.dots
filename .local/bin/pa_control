@@ -91,10 +91,10 @@ EOF
 
 case "$1" in
 	get-sink)
-		notify-send "Current sink" "$(get_default_sink_nickname)"
+		notify-send -u low "Current sink" "$(get_default_sink_nickname)"
 		;;
 	next-sink)
 		set_next_sink
-		notify-send "Changed to sink" "$(get_default_sink_nickname)"
+		notify-send -u low "Changed sink" "$(get_default_sink_nickname)"
 		;;
 esac

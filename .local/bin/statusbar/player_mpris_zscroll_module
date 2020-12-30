@@ -23,29 +23,46 @@ show_panel (){
 }
 
 send_notification (){
-	player_status=$(playerctl status 2> /dev/null)
-	if [ "$player_status" = "Playing" ]; then
-		artist="$(playerctl metadata artist)"
-		album="$(playerctl metadata album)"
-		title="$(playerctl metadata title)"
+	player_status="$(pctl_status status)"
 
-		if [ $album = "\n"]; then
-			notify-send "$icon $artist - $album" "$title"
-		else
-			notify-send "$icon $artist" "$title"
-		fi
-	elif [ "$player_status" = "Paused" ]; then
-		artist="$(playerctl metadata artist)"
-		album="$(playerctl metadata album)"
-		title="$(playerctl metadata title)"
+	metadata="$(pctl_status get-metadata)"
+	contains_album="$(echo $metadata | cut -d'>' -f1)"
 
-		if [ $album = "\n"]; then
-			notify-send "$icon (Paused) $artist - $album" "$title"
+	artist=
+	album=
+	title=
+
+	summary=
+	body=
+
+	pp_icon=
+
+	if [ "$player_status" = "Playing" ] || [ "$player_status" = "Paused" ]; then
+		if [ "$contains_album" = "yes" ]; then
+			artist="$(echo $metadata | cut -d'>' -f2)"
+			album="$(echo $metadata | cut -d'>' -f3)"
+			title="$(echo $metadata | cut -d'>' -f4)"
+
+			summary="$artist ($album)"
+			body="$title"
+
 		else
-			notify-send "$icon (Paused) $artist" "$title"
+			artist="$(echo $metadata | cut -d'>' -f2)"
+			title="$(echo $metadata | cut -d'>' -f3)"
+
+			summary="$artist"
+			body="$title"
 		fi
+
+		if [ "$player_status" = "Playing" ]; then
+			pp_icon=""
+		else
+			pp_icon=""
+		fi
+
+		notify-send -u low "$icon $pp_icon $summary" "$body"
 	else
-		notify-send "$icon Nothing playing"
+		notify-send -u low "$icon Nothing playing"
 	fi
 
 }
