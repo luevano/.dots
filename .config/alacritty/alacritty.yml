@@ -134,13 +134,17 @@ cursor:
 
 live_config_reload: true
 
+# Only needed if alacritty should always start tmux,
+# but I rather configure this with sxhkd.
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - -l
+#     - -c
+#     - "tmux attach || tmux"
 
 #working_directory: None
 

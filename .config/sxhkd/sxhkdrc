@@ -3,10 +3,8 @@
 #
 
 # Basic.
-super + Return
-	$TERMINAL
-# Read after releasing 'd' because as soon
-# as dmenu runs it listens for kb presses.
+super + {_,shift + }Return
+	$TERMINAL { ,-e tmuxed}
 super + d
 	dmenu_run -fn "Noto Sans Mono:size=12" -nb "$(xresource background)" -nf "$(xresource foreground)" -sb "$(xresource color4)" -sf "$(xresource color0)"
 super + Escape

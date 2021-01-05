@@ -1,0 +1,4 @@
+#!/bin/sh
+# For some reason one cannot pass this to alacritty directly,
+# you have to call a script/program...
+tmux attach || tmux
