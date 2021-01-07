@@ -132,10 +132,18 @@ set showcmd
 		\ set expandtab |
 		\ set textwidth=79 |
 		\ set fileformat=unix
-	au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+	au BufAdd,BufEnter,BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+	" Some filetypes that require 4 spaces for tabs.
+	au BufAdd,BufEnter,BufNewFile,BufRead *.java
+		\ set tabstop=4 |
+		\ set softtabstop=0 |
+		\ set shiftwidth=4 |
+		\ set noexpandtab |
+		\ set fileformat=unix
 
 	" Some filetypes that require 2 spaces for tabs.
-	au BufNewFile,BufRead *.xml,*.html
+	au BufAdd,BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp
 		\ set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |
