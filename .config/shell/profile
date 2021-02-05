@@ -5,8 +5,8 @@
 export PATH="$PATH:$(du -L "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
 	## Useful vars.
-export MAINMON="DP-0"
-export SECMON="HDMI-0"
+export MAINMON="DP-2"
+export SECMON="HDMI-1"
 	## Default programs.
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -119,6 +119,10 @@ export TEXMFDIST=/usr/share/texmf-dist
 
 	## qBittorrent.
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+	## Java.
+	# This is for blank window on window managers.
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 
 ##--Start X automatically--##

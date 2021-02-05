@@ -45,6 +45,17 @@ set showcmd
 		"Auto completion
 		Plug 'Valloric/YouCompleteMe'
 			let g:ycm_autoclose_preview_window_after_completion=1
+			if !has_key( g:, 'ycm_language_server' )
+				let g:ycm_language_server = []
+			endif
+			let g:ycm_language_server += [
+				\	{
+				\ 		'name': 'godot',
+				\		'filetypes': [ 'gdscript' ],
+				\		'project_root_files': [ 'project.godot' ],
+				\		'port': 6008
+				\	}
+				\ ]
 
 		" TeX
 		Plug 'lervag/vimtex'
@@ -85,6 +96,15 @@ set showcmd
 			" let g:syntastic_tex_checkers=['chktex']
 			"" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
 			" let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
+
+		" JavaScript
+		Plug 'yuezk/vim-js'
+		Plug 'maxmellon/vim-jsx-pretty'
+
+		Plug 'alvan/vim-closetag'
+		let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.wsdl,*.wsd'
+
+		Plug 'habamax/vim-godot'
 
 	call plug#end()
 	"" Commands for plug.
@@ -132,23 +152,33 @@ set showcmd
 		\ set expandtab |
 		\ set textwidth=79 |
 		\ set fileformat=unix
-	au BufAdd,BufEnter,BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
 	" Some filetypes that require 4 spaces for tabs.
-	au BufAdd,BufEnter,BufNewFile,BufRead *.java
+	au BufEnter,BufNewFile,BufRead *.java
 		\ set tabstop=4 |
 		\ set softtabstop=0 |
 		\ set shiftwidth=4 |
 		\ set noexpandtab |
 		\ set fileformat=unix
 
+	" Similar to python, but for js.
+	" au BufEnter,BufNewFile,BufRead *.js
+	" 	\ set tabstop=4 |
+	" 	\ set softtabstop=4 |
+	" 	\ set shiftwidth=4 |
+	" 	\ set expandtab=4 |
+	" 	\ set fileformat=unix
+
 	" Some filetypes that require 2 spaces for tabs.
-	au BufAdd,BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp
+	au BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp,*.wsdl,*.xsd
 		\ set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |
 		\ set expandtab |
 		\ set fileformat=unix
+
+	" Show bad whitespaces on some files.
+	au BufAdd,BufEnter,BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.js,*.java,*.xml,*.html,*.jsp match BadWhitespace /\s\+$/
+
 
 	" Listchars
 	set showbreak=↪\

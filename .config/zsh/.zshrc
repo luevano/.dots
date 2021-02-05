@@ -10,6 +10,9 @@ PS1="%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue
 # Load aliases if existent.
 [[ -f $HOME/.config/shell/aliasrc ]] && . ~/.config/shell/aliasrc
 
+# Source nvm if existent.
+# [[ -f /usr/share/nvm/init-nvm.sh ]] && . /usr/share/nvm/init-nvm.sh
+
 # History cache.
 HISTFILE=$HOME/.cache/zsh/history
 HISTSIZE=10000
