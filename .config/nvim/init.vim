@@ -152,6 +152,7 @@ set showcmd
 		\ set expandtab |
 		\ set textwidth=79 |
 		\ set fileformat=unix
+
 	" Some filetypes that require 4 spaces for tabs.
 	au BufEnter,BufNewFile,BufRead *.java
 		\ set tabstop=4 |
@@ -161,15 +162,15 @@ set showcmd
 		\ set fileformat=unix
 
 	" Similar to python, but for js.
-	" au BufEnter,BufNewFile,BufRead *.js
-	" 	\ set tabstop=4 |
-	" 	\ set softtabstop=4 |
-	" 	\ set shiftwidth=4 |
-	" 	\ set expandtab=4 |
-	" 	\ set fileformat=unix
+	au BufEnter,BufNewFile,BufRead *.js
+		\ set tabstop=2 |
+		\ set softtabstop=2 |
+		\ set shiftwidth=2 |
+		\ set expandtab |
+		\ set fileformat=unix
 
-	" Some filetypes that require 2 spaces for tabs.
-	au BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp,*.wsdl,*.xsd
+	" Some filetypes that require 2 spaces for tabs. (xml/html like)
+	au BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp,*.wsdl,*.xsd,*.yaml,*.yml
 		\ set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |

@@ -1,0 +1,4 @@
+2:cpu
+disk 2:mem
+net/2
+2:procs
