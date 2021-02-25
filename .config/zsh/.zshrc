@@ -2,7 +2,7 @@
 
 # PS1 colors and style.
 autoload -U colors && colors
-PS1="%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue]%}%M %{$fg_bold[magenta]%}%(5~|%-2~/.../%2~|%~)%{$fg_bold[red]%}]%{$fg_bold[cyan]%}%#%{$reset_color%} "
+PS1="%(!.%{$fg_bold[red]%}[%n@%M %(5~|%-2~/.../%2~|%~)]%#%{$reset_color%} .%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue]%}%M %{$fg_bold[magenta]%}%(5~|%-2~/.../%2~|%~)%{$fg_bold[red]%}]%{$fg_bold[cyan]%}%#%{$reset_color%} )"
 
 # Set LS_COLORS via dircolors.
 [[ -f $HOME/.config/dircolors ]] && eval "$(dircolors $HOME/.config/dircolors)"
