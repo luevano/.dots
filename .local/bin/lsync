@@ -1,8 +1,21 @@
 #!/bin/sh
 # Push to luevano.xyz
 
-echo "rsync: pushing (U) local (lz) to webserver (lzserver)."
-rsync -rtuvP --delete-after $HOME/dox/www/luevano/ lzr:/var/www/luevano/
+# This pushes everything!
+echo "rsync: pushing (U) local (lz) to webserver (lzserver). (luevano.xyz)"
+rsync -rtuvP --delete-after --exclude-from=$HOME/dox/www/luevano.xyz/.rsyncignore $HOME/dox/www/luevano.xyz/ lzr:/var/www/
+
+# Only static.luevano.xyz.
+# echo "rsync: pushing (U) local (lz) to webserver (lzserver). (luevano.xyz)"
+# rsync -rtuvP --delete-after $HOME/dox/www/luevano.xyz/static/ lzr:/var/www/static/
+
+# Only luevano.xyz.
+# echo "rsync: pushing (U) local (lz) to webserver (lzserver). (luevano.xyz)"
+# rsync -rtuvP --delete-after $HOME/dox/www/luevano.xyz/luevano/ lzr:/var/www/luevano/
+
+# Only gb.luevano.xyz.
+# echo "rsync: pushing (U) local (lz) to webserver (lzserver). (luevano.xyz)"
+# rsync -rtuvP --delete-after $HOME/dox/www/luevano.xyz/gb/ lzr:/var/www/gb/
 
 # echo "rsync: pulling (U) webserver (lzserver) to local (lz)."
 # rsync -rtuvP lzr:/var/www/luevano/ $HOME/dox/www/luevano

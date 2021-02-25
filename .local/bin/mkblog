@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run ssg to make the blog. (blog.luevano.xyz)
+
+ssg $HOME'/dox/www/luevano.xyz/blog/src' $HOME'/dox/www/luevano.xyz/blog/dst' "Luevano's blog" 'https://blog.luevano.xyz'
