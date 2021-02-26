@@ -98,6 +98,7 @@ bspc rule -a *:*:"Picture-in-Picture" state=floating rectangle=640x360+640+360
 bspc rule -a "Peek":*:* state=floating
 bspc rule -a "Zathura":*:* state=tiled
 bspc rule -a "Godot":*:* state=floating
+bspc rule -a "picocad":*:* state=floating
 bspc rule -a "Steam":*:* state=floating
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
