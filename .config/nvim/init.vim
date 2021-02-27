@@ -170,7 +170,7 @@ set showcmd
 		\ set fileformat=unix
 
 	" Some filetypes that require 2 spaces for tabs. (xml/html like)
-	au BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp,*.wsdl,*.xsd,*.yaml,*.yml
+	au BufEnter,BufNewFile,BufRead *.xml,*.html,*.jsp,*.wsdl,*.xsd,*.yaml,*.yml,*.css
 		\ set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |

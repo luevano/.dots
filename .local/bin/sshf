@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Get the _header.html and _footer.html required for ssg from an already defined html.
+main() {
+	in_file="${1:-$HOME/dox/www/luevano.xyz/luevano/index.html}"
+	out_folder="${2:-$HOME/dow/www/blog/src/}"
+
+	sed '/<\/header/q' $in_file > $out_folder/_header.html
+	# Not proud of this, lol.
+	tac $in_file | sed '/<footer/q' | tac > $out_folder/_footer.html
+}
+
+main "$@"
