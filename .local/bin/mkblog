@@ -1,4 +1,6 @@
 #!/bin/sh
-# Run ssg to make the blog. (blog.luevano.xyz)
+# Create _header.html and _footer.html based on index.html from luevano.xyz.
+sshf $HOME'/dox/www/luevano.xyz/luevano/index.html' $HOME'/dox/www/luevano.xyz/blog/src'
 
+# Run ssg to make the blog. (blog.luevano.xyz)
 ssg $HOME'/dox/www/luevano.xyz/blog/src' $HOME'/dox/www/luevano.xyz/blog/dst' "Luevano's blog" 'https://blog.luevano.xyz'

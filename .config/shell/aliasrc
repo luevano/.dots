@@ -22,3 +22,6 @@ alias dots="/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME"
 
 # TexLive Manager fix as described in https://wiki.archlinux.org/index.php/TeX_Live
 alias tlmgr="$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode"
+
+# MyCli
+alias mycli="mycli --myclirc $HOME/.config/mycli/myclirc"
