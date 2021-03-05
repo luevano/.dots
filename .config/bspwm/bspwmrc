@@ -37,8 +37,8 @@ if [ $(uname -n) = "arch" ]; then
 		bspwm_enforce_monitor_position $MAINMON '^1' &
 	fi
 
-	bspc monitor $MAINMON -d Terminal Editor Code File Multimedia
-	bspc monitor $SECMON -d Browser Messages Reader Gaming Music
+	bspc monitor $MAINMON -d I II III IV V
+	bspc monitor $SECMON -d VI VII VIII IX X
 else
 	bspc monitor -d I II III IV V VI VII VIII IX X
 fi
