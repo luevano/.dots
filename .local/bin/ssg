@@ -344,7 +344,7 @@ add_article_list() {
 			fi
 
 			page_title=$(head -n 1 "$src/$fn" | cut -c 3-)
-			echo "<li>$date - <a href=https://blog.luevano.xyz/${fn%\.md}.html>${page_title}</a></li>"
+			echo "<li>$date - <a href=https://blog.luevano.xyz/${fn%\.md}>${page_title}</a></li>"
 		fi
 	done <<EOF
 	$fs
