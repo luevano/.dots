@@ -257,4 +257,4 @@ set showcmd
 	nmap <F8> :Goyo<CR>
 
 	" YouCompleteMe
-	map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+	map <Leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
