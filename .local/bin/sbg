@@ -1,0 +1,430 @@
+#!/bin/sh
+
+#
+# (s)tatic (b)log (g)enerator.
+#
+# Heavily inspired (ripped off) by Roman Zolotarev's ssg5 (https://rgz.ee/bin/ssg5)
+# and rssg (https://rgz.ee/bin/rssg), as well as Luke Smith's lb and sup
+# (https://github.com/LukeSmithxyz/lb).
+#
+# Aimed to correct 'flaws' of both sets of scripts, and made to work
+# as how I wanted them both to work.
+#
+# This script uses lowdown (https://github.com/kristapsdz/lowdown) for
+# the .md to .html translation.
+#
+
+
+print_help(){
+	# $1: dir/file or parameter name, $2: dir/file name
+
+	if [ "$1" = "dir" ]
+	then echo "$(basename "$0"): $2: no such directory."
+	elif [ "$1" = "file" ]
+	then echo "$(basename "$0"): $2: no such file."
+	else
+		if test -n "$1"
+		then echo "$(basename "$0"): missing -$1 parameter."
+		fi
+	fi
+	echo ""
+	echo "Usage: $(basename "$0") [-s] [-d] [-t] [-b] [other options]"
+	echo "	-s 'src' directory."
+	echo "	-d 'dst' directory."
+	echo "	-t 'title' blog title."
+	echo "	-b 'base url' blog base url."
+	echo "	-f 'date format' date format as stated in 'find' command."
+	echo "	-e 'extract' extract the header and footer from this .html file (replaces _header.html and _footer.html in src)."
+	exit 1
+}
+
+
+readlink_f(){
+	# $1: src/dst
+
+	file="$1"
+	cd "$(dirname "$file")"
+	file=$(basename "$file")
+
+	# Tests if src or dst is a symbolic link,
+	# in which case resolves the symbolic link
+	# and gets the actual directories.
+	while test -L "$file"
+	do
+		file=$(readlink "$file")
+		cd "$(dirname "$file")"
+		file=$(basename "$file")
+	done
+
+	# Avoid all symbolic links and return the actual path.
+	dir=$(pwd -P)
+	echo "$dir/$file"
+}
+
+
+extract_hf_from_html(){
+	# $1: html file name, $2: title
+
+	# Get the header part, and replace title.
+	sed "/<\/header/q" "$1" > "$src/_header.html"
+	sed -i "s/<title>.*/<title>$2<\/title>/g" "$src/_header.html"
+
+	# Not proud of this... get the footer part.
+	tac  "$1" | sed "/<footer/q" | tac > "$src/_footer.html"
+}
+
+
+list_dirs(){
+	# $1: dir path.
+
+	cd "$1" && eval "find . -type d ! -name '.' ! -path '*/_*' $IGNORE"
+}
+
+
+list_files(){
+	# $1: dir path.
+
+	cd "$1" && eval "find . -type f ! -name '.' ! -path '*/_*' $IGNORE -exec stat -c '%Y 0 %n' {} \\;"
+}
+
+
+list_pages(){
+	# $1: dir path.
+
+	e="\\( -name '*.html' -o -name '*.md' \\)"
+	cd "$1" && eval "find . -type f ! -path '*/.*' ! -path '*/_*' $IGNORE $e" |
+	sed 's#^./##;s#.md$#.html#;s#/index.html$#/#'
+}
+
+
+list_files_add_mod(){
+	# $1: dir path, $2: .files.
+	# 'n' stands for new and 'o' for old.
+
+	cd "$1" && fn=$(list_files "$1")
+	fo=$(cat "$2")
+
+	# Loop over new file list.
+	while IFS= read -r fn_line
+	do
+		fn_n=$(echo "$fn_line" | cut -d' ' -f3)
+		fn_ts=$(echo "$fn_line" | cut -d' ' -f1)
+
+		fo_line=$(echo "$fo" | grep "$fn_n")
+		if test -n "$fo_line"
+		then
+			# If file name exists in old list...
+			fo_ts=$(echo "$fo_line" | cut -d' ' -f1)
+
+			# Either add the new timestamp on the
+			# second column (mod) or keep the old line.
+			if [ $fn_ts -gt $fo_ts ]
+			then echo $fo_ts $fn_ts $fn
+			else echo $fo_line
+			fi
+		else
+			# If not, just print the new file data.
+			echo $fn_ts" 0 "$fn
+		fi
+	done <<EOF
+	$fn
+EOF
+}
+
+
+md_to_html(){
+	# $1: src, $2: dst, $3: title, $4: .files
+
+	while read -r line
+	do
+		# Only for .md files, duh.
+		if echo $line | grep -q '\.md$'
+		then
+			# File name, birth ts and mod ts.
+			f=$(echo "$line" | cut -d' ' -f3 | cut -d'/' -f2-)
+			b=$(echo "$line" | cut -d' ' -f1)
+			m=$(echo "$line" | cut -d' ' -f2)
+
+			html=$(
+				lowdown \
+				--html-no-skiphtml \
+				--html-no-escapehtml \
+				--html-no-owasp \
+				--html-no-head-ids < "$1/$f")
+
+			if echo "$f" | grep -q "index"
+			then html=$(add_article_list "$html" "$1" "$4")
+			else html=$(add_html_ts "$html" "$b" "$m")
+			fi
+
+			add_hf_html "$html" > "$2/${f%\.md}.html"
+		fi
+	done <<EOF
+	$4
+EOF
+}
+
+
+add_article_list() {
+	# $1: html text, $2: src, $3: .files
+
+	# Reverse sorted file list.
+	fs_reversed="$(echo "$3" | sort -r -k 1)"
+
+	# echo the current html text and add the ul tag for the list.
+	echo "$1"
+	echo ""
+	echo '<ul class="articles">'
+
+	c_month_year=
+	while IFS= read -r line
+	do
+		# Some necessary varaibles
+		fn=$(echo $line | cut -d' ' -f3 | cut -d'/' -f2-)
+		d=$(echo $line | cut -d' ' -f1)
+		month_year=$(date --date @$d +"%B %Y")
+		date=$(date --date @$d +"%b %d")
+
+		# Only work on non index files.
+		if ! echo "$fn" | grep -q 'index'
+		then
+			if [ "$c_month_year" = "" ]
+			then
+				# For the first appearing year.
+				c_month_year=$month_year
+				echo ""
+				echo "<h3>$month_year</h3>"
+				echo ""
+			else
+				# Each time the year changes, print it.
+				if [ "$c_month_year" != "$month_year" ]
+				then
+					echo ""
+					echo "<h3>$month_year</h3>"
+					echo ""
+				fi
+			fi
+
+			page_title=$(head -n 1 "$2/$fn" | cut -c 3-)
+			echo "<li>$date - <a href=https://blog.luevano.xyz/${fn%\.md}>$page_title</a></li>"
+		fi
+	done <<EOF
+	$fs_reversed
+EOF
+	echo "</ul>"
+}
+
+
+add_html_ts(){
+	# $1: html text, $2: birth ts, $3: mod ts.
+
+	echo "$1"
+
+	if [ $m -gt $b ]
+	then
+		printf "\n<div class="timestamp">\n<hr>\n<p>Created: $(date --date @$b +"$date_f"); modified: $(date --date @$m +"$date_f")</p>\n</div>"
+	else
+		printf "\n<div class="timestamp">\n<hr>\n<p>Created: $(date --date @$b +"$date_f")</p>\n</div>"
+	fi
+}
+
+
+add_hf_html(){
+	# $1: html text.
+
+	# lol.
+	echo "$HEADER"
+	echo "$1"
+	echo "$FOOTER"
+}
+
+
+html_add_hf(){
+	# $1: src, $2: dst, $3: .files.
+
+	while IFS= read -r line
+	do
+		if echo "$line" | grep -q '\.html$'
+		then
+			f=$(echo "$line" | cut -d' ' -f3 | cut -d'/' -f2-)
+
+			html=$(cat "$src/$f")
+
+			add_hf_html "$html" > "$2/$f"
+		fi
+	done <<EOF
+	$3
+EOF
+}
+
+
+print_status() {
+	# $1: singular, $2: plural, $3: list of something (urls, files, etc.)
+
+	# Prints a simple status line.
+	test -z "$3" && printf 'no %s' "$2" && return
+
+	echo "$3" | awk -v singular="$1" -v plural="$2" '
+	END {
+		if (NR==1) printf NR " " singular
+		if (NR>1) printf NR " " plural
+	}'
+}
+
+
+create_sitemap() {
+	# $1: .files, $2: urls, $3: base_url.
+
+	# $1 = urls, $2 = base_url, $3 = date, $4 = .files_ts
+
+	date=$(date +%Y-%m-%d)
+	# Since fs saves lists as .md files, change .md to .html
+	# to be able to parse it.
+	fs="$(echo "$1" | sed 's#\.md#\.html#')"
+
+	echo '<?xml version="1.0" encoding="UTF-8"?>'
+	echo '<urlset'
+	echo 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
+	echo 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9'
+	echo 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"'
+	echo 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+	# Read each line on the urls list.
+	while IFS= read -r line
+	do
+		# Get the corresponding .files_ts line.
+		fd=$(echo "$fs" | grep "$line")
+
+		if test -n "$fd"
+		then
+			# Get timestamps present in .files_ts.
+			fdb=$(echo "$fd" | cut -d' ' -f1)
+			fdm=$(echo "$fd" | cut -d' ' -f2)
+
+			# echo "b: $fdb, m: $fdm"
+			# If modification timestamp is greater than creation timestamp...
+			if [ $fdm -gt $fdb ]
+			then
+				# Use modification timestamp.
+				echo $line |
+				sed -E 's#^(.*)$#<url><loc>'"$3"'/\1</loc><lastmod>'"$(date --date @$fdm +%Y-%m-%d)"'</lastmod><priority>1.0</priority></url>#'
+			else
+				# Use creation timestamp.
+				echo $line |
+				sed -E 's#^(.*)$#<url><loc>'"$3"'/\1</loc><lastmod>'"$(date --date @$fdb +%Y-%m-%d)"'</lastmod><priority>1.0</priority></url>#'
+			fi
+		else
+			# Use 'current' timestamp.
+			echo $line |
+			sed -E 's#^(.*)$#<url><loc>'"$3"'/\1</loc><lastmod>'"$date"'</lastmod><priority>1.0</priority></url>#'
+		fi
+	done <<EOF
+	$2
+EOF
+	echo '</urlset>'
+}
+
+### Parameter catching.
+while getopts ":s:d:t:b:f:e:" opt
+do
+	case "$opt" in
+		s) src="$OPTARG" ;;
+		d) dst="$OPTARG" ;;
+		t) title="$OPTARG" ;;
+		b) base_url="$OPTARG" ;;
+		f) date_f="$OPTARG" ;;
+		e) extract_hf="$OPTARG" ;;
+		\?) echo "$(basename "$0"): invalid option -$OPTARG."
+			print_help ;;
+		:) echo "$(basename "$0"): invalid option -$OPTARG: requires an argument."
+			print_help ;;
+	esac
+done
+
+### Handle exeptions, prepare variables and add default values.
+test -n "$src" || print_help "s"
+test -n "$dst" || print_help "d"
+test -n "$title" || print_help "t"
+test -n "$base_url" || print_help "b"
+test -d "$src" || print_help "dir" "$src"
+test -d "$dst" || print_help "dir" "$dst"
+test -z "$extract_hf" || test -f "$extract_hf" || print_help "file" "$extract_hf"
+
+# Only tests if there is a string in date_f,
+# doesn't really check if it has the correct formatting.
+if test -z "$date_f"
+then date_f="%a, %b %d, %+4Y @ %R %Z"
+fi
+
+# Convert src and dst to full paths, avoiding symlinks.
+src=$(readlink_f "$src")
+dst=$(readlink_f "$dst")
+
+### Actual program logic.
+# General ignores for 'find'.
+IGNORE=$(
+	if test -f "$src/.sbgignore"
+	then
+		while read -r x
+		do
+			test -n "$x" || continue
+			printf ' ! -path "*/%s*"' "$x"
+		done < "$src/.sbgignore"
+	else
+		# If no .sbgignore, just ignore all dotfiles.
+		printf ' ! -path "*/.*"'
+	fi
+)
+
+
+# Get the _header.html and _footer.html.
+if test -n "$extract_hf"
+then extract_hf_from_html "$extract_hf" "$title"
+fi
+
+h_file="$src/_header.html"
+f_file="$src/_footer.html"
+test -f "$h_file" && HEADER=$(cat "$h_file")
+
+test -f "$f_file" && FOOTER=$(cat "$f_file")
+
+# Get list of directories inside src
+# and create them inside dst.
+list_dirs "$src" | (cd "$src" && cpio -pdu "$dst")
+
+# Get file list.
+echo "[file list]"
+fs=$(
+	if test -f "$src/.files"
+	then list_files_add_mod "$src" "$src/.files"
+	else list_files "$src"
+	fi
+)
+echo "$fs" | tee "$src/.files"
+
+# If the file list contains .md files,
+# parse them with lowdown.
+if echo "$fs" | grep -q '\.md$'
+then
+	if test -x "$(which lowdown 2> /dev/null)"
+	then
+		md_to_html "$src" "$dst" "$title" "$fs"
+	else
+		echo "$(basename "$0"): couldn't find lowdown."
+		exit 1
+	fi
+fi
+
+# If the file list contains .html files,
+# just add the header and the footer.
+html_add_hf "$src" "$dst" "$fs"
+
+printf '[ssg] ' >&2
+print_status 'file, ' 'files, ' "$fs" >&2
+
+# Create sitemap.
+urls=$(list_pages "$src")
+test -n "$urls" && test -n "$fs" &&
+create_sitemap "$fs" "$urls" "$base_url" > "$dst/sitemap.xml"
+
+print_status 'url' 'urls' "$urls" >&2
+echo >&2

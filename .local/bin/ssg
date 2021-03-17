@@ -30,6 +30,8 @@ main() {
 	test -d "$1" || no_dir "$1"
 	test -d "$2" || no_dir "$2"
 
+	# Convert src and dst to full paths,
+	# avoiding symlinks.
 	src=$(readlink_f "$1")
 	dst=$(readlink_f "$2")
 
@@ -131,15 +133,25 @@ main() {
 
 
 readlink_f() {
+	# $1 = src or dst
+
 	file="$1"
+	# Go to the root of the blog (strips dst or src from path)
 	cd "$(dirname "$file")"
+	# Only get the directory name (src or dst)
 	file=$(basename "$file")
+
+	# Tests if src or dst is a symbolic link,
+	# in which case resolves the symbolic link (readlink)
+	# and gets the actual directories.
 	while test -L "$file"
 	do
 		file=$(readlink "$file")
 		cd "$(dirname "$file")"
 		file=$(basename "$file")
 	done
+
+	# Avoid all symbolic links and return the actual path.
 	dir=$(pwd -P)
 	echo "$dir/$file"
 }
