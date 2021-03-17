@@ -418,7 +418,7 @@ fi
 # just add the header and the footer.
 html_add_hf "$src" "$dst" "$fs"
 
-printf '[ssg] ' >&2
+printf '[sbg] ' >&2
 print_status 'file, ' 'files, ' "$fs" >&2
 
 # Create sitemap.
