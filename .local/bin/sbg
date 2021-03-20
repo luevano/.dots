@@ -119,7 +119,7 @@ list_files_add_mod(){
 			# Either add the new timestamp on the
 			# second column (mod) or keep the old line.
 			if [ $fn_ts -gt $fo_ts ]
-			then echo $fo_ts $fn_ts $fn
+			then echo $fo_ts $fn_ts $fn_n
 			else echo $fo_line
 			fi
 		else
