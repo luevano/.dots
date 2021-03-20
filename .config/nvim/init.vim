@@ -85,17 +85,17 @@ set showcmd
 		" highlight link JavaIdentifier NONE
 
 		" Syntax
-		" Plug 'vim-syntastic/syntastic'
-			" set statusline+=%#warningmsg#
-			" set statusline+=%{SyntasticStatuslineFlag()}
-			" set statusline+=%*
-			" let g:syntastic_always_populate_loc_list=1
-			" let g:syntastic_auto_loc_list=1
-			" let g:syntastic_check_on_open=1
-			" let g:syntastic_check_on_wq=0
-			" let g:syntastic_tex_checkers=['chktex']
+		Plug 'vim-syntastic/syntastic'
+			set statusline+=%#warningmsg#
+			set statusline+=%{SyntasticStatuslineFlag()}
+			set statusline+=%*
+			let g:syntastic_always_populate_loc_list=1
+			let g:syntastic_auto_loc_list=1
+			let g:syntastic_check_on_open=1
+			let g:syntastic_check_on_wq=0
+			let g:syntastic_tex_checkers=['chktex']
 			"" let g:syntastic_tex_lacheck_quiet_messages = {'regex': '\Vpossible unwanted space at'}
-			" let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
+			let g:syntastic_tex_chktex_quiet_messages = {'level': 'warnings'}
 
 		" JavaScript
 		Plug 'yuezk/vim-js'

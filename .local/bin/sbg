@@ -124,7 +124,7 @@ list_files_add_mod(){
 			fi
 		else
 			# If not, just print the new file data.
-			echo $fn_ts" 0 "$fn
+			echo $fn_ts" 0 "$fn_n
 		fi
 	done <<EOF
 	$fn
@@ -145,8 +145,13 @@ md_to_html(){
 			b=$(echo "$line" | cut -d' ' -f1)
 			m=$(echo "$line" | cut -d' ' -f2)
 
+			# Here, parse-no-autolink is used
+			# so no link starting with 'www'
+			# is converted to an actual a tag with an
+			# actual link, ew.
 			html=$(
 				lowdown \
+				--parse-no-autolink \
 				--html-no-skiphtml \
 				--html-no-escapehtml \
 				--html-no-owasp \
@@ -364,6 +369,7 @@ dst=$(readlink_f "$dst")
 IGNORE=$(
 	if test -f "$src/.sbgignore"
 	then
+		# Currently not working...
 		while read -r x
 		do
 			test -n "$x" || continue
