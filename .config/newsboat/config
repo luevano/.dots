@@ -30,7 +30,7 @@ color info black blue bold
 color article default default
 
 highlight all "---.*---" yellow
-highlight feedlist ".*(0/0))" black
+highlight feedlist ".*(0/0))" default default invis
 highlight article "^(Feed|Author):.*$" cyan default bold
 highlight article "^(Title):.*$" blue default
 highlight article "^(Link|Date):.*$" default default
