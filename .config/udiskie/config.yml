@@ -5,7 +5,7 @@
 program_options:
   tray: true
   menu: flat
-  automount: false
+  automount: true
   notify: true
   # password_cache: 30
   # file_manager: xdg-open

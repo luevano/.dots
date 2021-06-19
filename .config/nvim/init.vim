@@ -78,6 +78,9 @@ set showcmd
 		" Plug 'Yggdroot/indentLine'
 		" No longer needed as synstastic includes flake8 linter.
 		" Plug 'nvie/vim-flake8'
+		" Jinja support
+		Plug 'lepture/vim-jinja'
+		au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 
 		" Java
 		Plug 'uiiaoo/java-syntax.vim'

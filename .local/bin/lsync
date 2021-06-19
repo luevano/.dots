@@ -1,10 +1,14 @@
 #!/bin/sh
 # Push to luevano.xyz
 
-# This pushes everything! (except for blog, since it needs a bit more management)
+# This pushes everything! (except for blog and art, since it needs a bit more management)
 echo "rsync: pushing (U) local (lz) to webserver (lzserver). (luevano.xyz)"
-rsync -rtuvP --delete-after --exclude-from=$HOME/dox/www/luevano.xyz/.rsyncignore $HOME/dox/www/luevano.xyz/ luevanor:/var/www/
+rsync -rtuvPL --delete-after --exclude-from=$HOME/dox/www/luevano.xyz/.rsyncignore $HOME/dox/www/luevano.xyz/ luevanor:/var/www/
 
 # This pushes the blog.
 echo "rsync: pushing (U) local (lz) to webserver (lzserver). (blog.luevano.xyz)"
-rsync -rtuvP --delete-after $HOME/dox/www/luevano.xyz/blog/dst/ luevanor:/var/www/blog/
+rsync -rtuvPL --delete-after $HOME/dox/www/luevano.xyz/blog/dst/ luevanor:/var/www/blog/
+
+# This pushes the art.
+echo "rsync: pushing (U) local (lz) to webserver (lzserver). (art.luevano.xyz)"
+rsync -rtuvPL --delete-after $HOME/dox/www/luevano.xyz/art/dst/ luevanor:/var/www/art/

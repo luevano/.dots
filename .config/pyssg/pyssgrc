@@ -1,6 +1,9 @@
-SRC_PATH=src
-DST_PATH=dst
-BASE_URL=https://blog.luevano.xyz
+SRC=src
+DST=dst
+PLT=plt
+URL=https://blog.luevano.xyz
+STATIC_URL=https://static.luevano.xyz
+DEFAULT_IMAGE_URL=/images/b/default.png
 TITLE=Luévano's Blog
 DATE_FORMAT=%a, %b %d, %Y @ %H:%M %Z
 LIST_DATE_FORMAT=%b %d

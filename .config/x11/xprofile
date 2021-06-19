@@ -16,6 +16,7 @@ flameshot &
 # pulseaudio --start &
 pasystray &
 setsid sxhkd &
+syncthingtray --wait &
 
 # At the end, start the WM.
 exec bspwm

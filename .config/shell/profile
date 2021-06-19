@@ -125,6 +125,9 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 	# This is for blank window on window managers.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+	## Crypto stuff.
+export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
+
 
 ##--Start X automatically--##
 # Following: https://wiki.archlinux.org/index.php/Xinit#Autostart_X_at_login

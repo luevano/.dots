@@ -25,3 +25,6 @@ alias tlmgr="$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode"
 
 # MyCli
 alias mycli="mycli --myclirc $HOME/.config/mycli/myclirc"
+
+# monero
+alias monerod="monerod --data-dir "$XDG_DATA_HOME"/bitmonero"
